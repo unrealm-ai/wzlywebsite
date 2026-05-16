@@ -1,0 +1,179 @@
+@import "tailwindcss";
+
+/* ----------------------------------------------------------------------------
+ * 未知领域 — 设计系统 (Tailwind v4, CSS-first)
+ * 极简现代 + 大留白；95% 黑白灰 + 5% 品牌色
+ *
+ * 注意：自定义颜色变量使用独立命名空间（--bg / --fg / ...）而非 --color-*，
+ * 避免影响 Tailwind v4 默认调色板（neutral / white 等）的注入。
+ * -------------------------------------------------------------------------- */
+
+:root {
+  color-scheme: light;
+
+  /* 站点色板 */
+  --bg: #ffffff;
+  --fg: #0a0a0a;
+  --muted: #6b7280;
+  --subtle: #9ca3af;
+  --line: #e5e5e5;
+  --surface: #fafafa;
+  --brand: #2f5bff;
+  --brand-hover: #1e47e6;
+}
+
+@theme {
+  /* 字体族 */
+  --font-sans: var(--font-geist-sans), "PingFang SC", "Microsoft YaHei",
+    "Hiragino Sans GB", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo,
+    Consolas, monospace;
+
+  /* 容器宽度 */
+  --container-content: 768px;
+  --container-page: 1280px;
+}
+
+/* ----------------------------------------------------------------------------
+ * 基础元素
+ * -------------------------------------------------------------------------- */
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  font-feature-settings: "kern", "liga", "ss01";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--brand);
+  color: #ffffff;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ----------------------------------------------------------------------------
+ * 排版工具类（MDX 与正文使用）
+ * -------------------------------------------------------------------------- */
+
+.prose {
+  color: var(--fg);
+  font-size: 1rem;
+  line-height: 1.7;
+  max-width: var(--container-content);
+}
+
+.prose h1 {
+  font-size: 3rem;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  font-weight: 600;
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+.prose h2 {
+  font-size: 2rem;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  font-weight: 600;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+}
+
+.prose h3 {
+  font-size: 1.25rem;
+  line-height: 1.4;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.prose p {
+  margin-bottom: 1.25rem;
+  color: var(--fg);
+}
+
+.prose a {
+  color: var(--brand);
+  border-bottom: 1px solid color-mix(in oklab, var(--brand) 30%, transparent);
+  transition: border-color 200ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.prose a:hover {
+  border-bottom-color: var(--brand);
+}
+
+.prose ul,
+.prose ol {
+  margin: 1rem 0 1.25rem;
+  padding-left: 1.5rem;
+}
+
+.prose li {
+  margin-bottom: 0.5rem;
+}
+
+.prose blockquote {
+  border-left: 2px solid var(--line);
+  padding-left: 1.25rem;
+  color: var(--muted);
+  margin: 1.5rem 0;
+}
+
+.prose code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 0.25rem;
+  padding: 0.125rem 0.375rem;
+}
+
+.prose pre {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 0.5rem;
+  padding: 1rem 1.25rem;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+}
+
+.prose pre code {
+  background: transparent;
+  border: 0;
+  padding: 0;
+}
+
+.prose hr {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin: 3rem 0;
+}
+
+.prose img {
+  border-radius: 0.5rem;
+  margin: 2rem 0;
+}
