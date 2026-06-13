@@ -4,6 +4,8 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import {
+  ArrowLeft,
+  ArrowRight,
   ArrowUpRight,
   Bot,
   Network,
@@ -11,7 +13,6 @@ import {
   FileText,
   type LucideIcon,
 } from "lucide-react";
-import { cn } from "@/lib/utils";
 
 // ─────────────────────────────────────────────────────────
 // 产品数据
@@ -101,6 +102,9 @@ export function HeroShowcase() {
   }, [paused]);
 
   const product = PRODUCTS[active];
+  const showPrevious = () =>
+    setActive((i) => (i - 1 + PRODUCTS.length) % PRODUCTS.length);
+  const showNext = () => setActive((i) => (i + 1) % PRODUCTS.length);
 
   return (
     <div
@@ -116,7 +120,7 @@ export function HeroShowcase() {
       >
         {/* 主卡片 */}
         <div
-          className="relative rounded-2xl overflow-hidden"
+          className="relative h-[620px] rounded-2xl overflow-hidden"
           style={{
             background: "#ffffff",
             border: "1px solid #e5e5e5",
@@ -132,12 +136,13 @@ export function HeroShowcase() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+              className="flex h-full flex-col"
             >
               {/* 顶部视觉 */}
               <ProductVisual product={product} />
 
               {/* 内容区 */}
-              <div className="px-7 sm:px-9 pt-7 pb-8">
+              <div className="flex flex-1 flex-col px-7 sm:px-9 pt-7 pb-8">
                 <div className="flex items-center gap-2 mb-5">
                   <span className="text-[11px] uppercase tracking-[0.18em] text-[#9ca3af]">
                     {product.category}
@@ -178,7 +183,7 @@ export function HeroShowcase() {
                 </ul>
 
                 {/* 行动链接 */}
-                <div className="mt-8 flex items-center justify-between gap-4">
+                <div className="mt-auto flex items-center justify-between gap-4 pt-8">
                   <Link
                     href={`/products#${product.id}`}
                     className="inline-flex items-center gap-1.5 text-[14px] font-medium text-[#0a0a0a] hover:opacity-70 transition-opacity"
@@ -199,50 +204,24 @@ export function HeroShowcase() {
           </AnimatePresence>
         </div>
 
-        {/* 卡片下方：4 产品快速切换条 */}
-        <div className="mt-4 grid grid-cols-4 gap-2">
-          {PRODUCTS.map((p, idx) => {
-            const Icon = p.icon;
-            const isActive = idx === active;
-            return (
-              <button
-                key={p.id}
-                type="button"
-                onClick={() => setActive(idx)}
-                className={cn(
-                  "group flex items-center gap-2 px-3 py-2.5 rounded-lg text-left transition-all border",
-                  isActive
-                    ? "bg-white border-[#0a0a0a] shadow-sm"
-                    : "bg-white/60 border-[#ececec] hover:border-[#d4d4d4] hover:bg-white",
-                )}
-              >
-                <span
-                  className="inline-flex items-center justify-center h-7 w-7 rounded-md shrink-0"
-                  style={{
-                    background: isActive
-                      ? `linear-gradient(135deg, ${p.visualTone.from}, ${p.visualTone.to})`
-                      : "#f3f3f3",
-                    color: isActive ? "#ffffff" : "#525252",
-                  }}
-                >
-                  <Icon className="h-3.5 w-3.5" strokeWidth={2} aria-hidden />
-                </span>
-                <div className="min-w-0">
-                  <div
-                    className={cn(
-                      "text-[12px] font-medium truncate",
-                      isActive ? "text-[#0a0a0a]" : "text-[#525252]",
-                    )}
-                  >
-                    {p.name}
-                  </div>
-                  <div className="text-[10.5px] text-[#9ca3af] truncate">
-                    {p.category}
-                  </div>
-                </div>
-              </button>
-            );
-          })}
+        {/* 卡片下方：紧凑切换按钮 */}
+        <div className="mt-4 flex justify-end gap-2">
+          <button
+            type="button"
+            onClick={showPrevious}
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#e5e5e5] bg-white text-[#0a0a0a] shadow-sm transition-colors hover:bg-[#f7f7f7] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0a0a0a]"
+            aria-label="查看上一个产品"
+          >
+            <ArrowLeft className="h-4 w-4" aria-hidden />
+          </button>
+          <button
+            type="button"
+            onClick={showNext}
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#e5e5e5] bg-white text-[#0a0a0a] shadow-sm transition-colors hover:bg-[#f7f7f7] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0a0a0a]"
+            aria-label="查看下一个产品"
+          >
+            <ArrowRight className="h-4 w-4" aria-hidden />
+          </button>
         </div>
       </motion.div>
     </div>
