@@ -65,7 +65,8 @@ export function Footer() {
 
         <div className="border-t border-[var(--line)] py-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
           <p className="text-xs text-[var(--subtle)]">
-            © {SITE.copyrightYear} {SITE.name} unrealm-ai. All rights reserved.
+            © {SITE.copyrightYear} {SITE.name} {SITE.brandEn}. All rights
+            reserved.
           </p>
           <p className="text-xs text-[var(--subtle)]">
             Crafted with care · 探索未知，定义边界
