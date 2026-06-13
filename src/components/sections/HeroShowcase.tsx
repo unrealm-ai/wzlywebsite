@@ -84,27 +84,57 @@ const PRODUCTS: ProductCardData[] = [
 
 const AUTOPLAY_MS = 6500;
 
+const cardVariants = {
+  enter: (direction: number) => ({
+    opacity: 0,
+    x: direction > 0 ? 36 : -36,
+    scale: 0.985,
+  }),
+  center: {
+    opacity: 1,
+    x: 0,
+    scale: 1,
+  },
+  exit: (direction: number) => ({
+    opacity: 0,
+    x: direction > 0 ? -36 : 36,
+    scale: 0.985,
+  }),
+};
+
+const cardTransition = {
+  x: { type: "spring" as const, stiffness: 280, damping: 32, mass: 0.8 },
+  scale: { duration: 0.28, ease: [0.16, 1, 0.3, 1] as const },
+  opacity: { duration: 0.22, ease: "easeOut" as const },
+};
+
 // ─────────────────────────────────────────────────────────
 // 主组件
 // ─────────────────────────────────────────────────────────
 
 export function HeroShowcase() {
   const [active, setActive] = useState(0);
+  const [direction, setDirection] = useState(1);
   const [paused, setPaused] = useState(false);
 
   useEffect(() => {
     if (paused) return;
-    const t = setInterval(
-      () => setActive((i) => (i + 1) % PRODUCTS.length),
-      AUTOPLAY_MS,
-    );
+    const t = setInterval(() => {
+      setDirection(1);
+      setActive((i) => (i + 1) % PRODUCTS.length);
+    }, AUTOPLAY_MS);
     return () => clearInterval(t);
   }, [paused]);
 
   const product = PRODUCTS[active];
-  const showPrevious = () =>
+  const showPrevious = () => {
+    setDirection(-1);
     setActive((i) => (i - 1 + PRODUCTS.length) % PRODUCTS.length);
-  const showNext = () => setActive((i) => (i + 1) % PRODUCTS.length);
+  };
+  const showNext = () => {
+    setDirection(1);
+    setActive((i) => (i + 1) % PRODUCTS.length);
+  };
 
   return (
     <div
@@ -129,14 +159,16 @@ export function HeroShowcase() {
           }}
         >
           {/* 切换面板 */}
-          <AnimatePresence mode="wait">
+          <AnimatePresence initial={false} custom={direction}>
             <motion.article
               key={product.id}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-              className="flex h-full flex-col"
+              custom={direction}
+              variants={cardVariants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={cardTransition}
+              className="absolute inset-0 flex h-full flex-col will-change-transform"
             >
               {/* 顶部视觉 */}
               <ProductVisual product={product} />
