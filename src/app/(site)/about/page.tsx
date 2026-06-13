@@ -6,13 +6,13 @@ import { buildPageMetadata } from "@/lib/seo";
 export const metadata = buildPageMetadata({
   title: "关于我们",
   description:
-    "未知领域（Wzly）由一群对 AI 充满热忱的研究者与工程师组成，致力于让前沿智能技术真正落地。",
+    "未知领域（unrealm-ai）由一群对 AI 充满热忱的研究者与工程师组成，致力于让前沿智能技术真正落地。",
   path: "/about",
 });
 
 const MILESTONES = [
   { year: "2024", title: "公司创立", desc: "由资深 AI 研究者与工程师共同发起。" },
-  { year: "2025", title: "首款产品发布", desc: "Wzly Atlas 1.0 上线，服务首批企业客户。" },
+  { year: "2025", title: "首款产品发布", desc: "unrealm-ai Atlas 1.0 上线，服务首批企业客户。" },
   { year: "2026", title: "智能体平台公测", desc: "Agent Studio 与 Compass 行业助手发布。" },
 ];
 
@@ -22,7 +22,7 @@ export default function AboutPage() {
       <PageHero
         eyebrow="关于我们"
         title="一群相信智能体未来的人"
-        description="未知领域（Wzly）由资深研究者与工程师组成，致力于把前沿 AI 转化为真正能用的生产力。"
+        description="未知领域（unrealm-ai）由资深研究者与工程师组成，致力于把前沿 AI 转化为真正能用的生产力。"
       />
 
       <section className="py-24 sm:py-32">

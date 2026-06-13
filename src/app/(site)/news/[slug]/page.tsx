@@ -1,16 +1,27 @@
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import { Container } from "@/components/layout/Container";
+import { NEWS_ITEMS, getNewsItem } from "@/lib/news";
 import { buildPageMetadata } from "@/lib/seo";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+  return NEWS_ITEMS.map((item) => ({ slug: item.slug }));
+}
+
 export async function generateMetadata({ params }: PageProps) {
   const { slug } = await params;
+  const item = getNewsItem(slug);
+
   return buildPageMetadata({
-    title: `新闻 · ${slug}`,
+    title: item ? `新闻 · ${item.title}` : `新闻 · ${slug}`,
+    description: item?.excerpt,
     path: `/news/${slug}`,
   });
 }
@@ -18,6 +29,11 @@ export async function generateMetadata({ params }: PageProps) {
 // 详情占位页 —— MDX 加载逻辑将在阶段 6 接入
 export default async function NewsDetailPage({ params }: PageProps) {
   const { slug } = await params;
+  const item = getNewsItem(slug);
+
+  if (!item) {
+    notFound();
+  }
 
   return (
     <article className="py-20 sm:py-28">
@@ -31,16 +47,17 @@ export default async function NewsDetailPage({ params }: PageProps) {
         </Link>
 
         <p className="text-xs uppercase tracking-[0.16em] text-[var(--brand)] mb-4">
-          公司动态
+          {item.category}
         </p>
         <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight leading-tight">
-          新闻详情占位：{slug}
+          {item.title}
         </h1>
         <time className="block mt-6 text-sm text-[var(--muted)]">
-          2026.05.10
+          {item.date.replace(/-/g, ".")}
         </time>
 
         <div className="prose mt-12">
+          <p>{item.excerpt}</p>
           <p>
             这里将渲染 MDX 内容。当前为占位说明：在阶段 6 中将完成 MDX
             集成、frontmatter 解析、上一篇/下一篇导航与 ISR 重验证。

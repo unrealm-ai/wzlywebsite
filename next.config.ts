@@ -1,10 +1,16 @@
 import type { NextConfig } from "next";
 import createMDX from "@next/mdx";
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || undefined;
+
 const nextConfig: NextConfig = {
-  // 生产部署使用 standalone 输出：构建产物自包含 server.js，
-  // 部署时仅需 .next/standalone + .next/static + public 三份目录。
-  output: "standalone",
+  // GitHub Pages 只能托管静态文件；构建后会输出到 out/。
+  output: "export",
+  basePath,
+  trailingSlash: true,
+  images: {
+    unoptimized: true,
+  },
   pageExtensions: ["ts", "tsx", "mdx"],
   experimental: {
     mdxRs: true,

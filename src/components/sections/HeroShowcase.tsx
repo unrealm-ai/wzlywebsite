@@ -33,7 +33,7 @@ interface ProductCardData {
 const PRODUCTS: ProductCardData[] = [
   {
     id: "agent",
-    name: "Wzly Agent",
+    name: "unrealm-ai Agent",
     category: "智能体平台",
     tagline: "把复杂任务交给可执行的智能体",
     description:
@@ -68,13 +68,13 @@ const PRODUCTS: ProductCardData[] = [
     visualTone: { from: "#FF6A3D", to: "#FFB23D" },
   },
   {
-    id: "office",
-    name: "智能办公",
-    category: "生产力套件",
-    tagline: "把会议、文档、邮件，交给 AI 帮你完成",
+    id: "clausewise",
+    name: "ClauseWise 律智",
+    category: "合同智能",
+    tagline: "把合同审查交给 AI，把决策留给法务",
     description:
-      "为团队打造的 AI 办公助手：自动会议纪要、智能文档撰写、任务分配与待办跟进，一站完成。",
-    features: ["实时会议纪要与提取", "智能文档与邮件起草", "任务分发与协作跟进"],
+      "面向法务与业务团队的 AI 合同合约审查工具：自动识别风险条款、生成红线稿、给出合同修订建议，让合同评审更快更稳。",
+    features: ["AI 合同风险审查", "红线稿自动生成", "合同修订建议与对比"],
     icon: FileText,
     status: "即将发布",
     visualTone: { from: "#16A34A", to: "#0EA5E9" },
@@ -276,7 +276,7 @@ function ProductVisual({ product }: { product: ProductCardData }) {
         {product.id === "agent" && <AgentArt />}
         {product.id === "aigw" && <AigwArt />}
         {product.id === "marketing" && <MarketingArt />}
-        {product.id === "office" && <OfficeArt />}
+        {product.id === "clausewise" && <ClauseWiseArt />}
       </div>
 
       {/* 角标：产品图标 */}
@@ -438,8 +438,8 @@ function MarketingArt() {
   );
 }
 
-// 智能办公：多文档与勾选
-function OfficeArt() {
+// ClauseWise 律智：合同文档审查与红线/勾选
+function ClauseWiseArt() {
   return (
     <svg
       viewBox="0 0 400 180"

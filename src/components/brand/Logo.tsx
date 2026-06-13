@@ -13,7 +13,7 @@ export function Logo({ className, compact = false }: LogoProps) {
   return (
     <Link
       href="/"
-      aria-label="未知领域 Wzly 首页"
+      aria-label="未知领域 unrealm-ai 首页"
       className={cn(
         "inline-flex items-center gap-2.5 text-[var(--fg)]",
         className,
@@ -48,7 +48,7 @@ export function Logo({ className, compact = false }: LogoProps) {
         <span className="text-base font-semibold tracking-tight">
           未知领域
           <span className="ml-1 text-[var(--muted)] font-normal">
-            Wzly
+            unrealm-ai
           </span>
         </span>
       )}

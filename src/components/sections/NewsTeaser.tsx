@@ -22,7 +22,7 @@ const PLACEHOLDER_NEWS: NewsItem[] = [
   },
   {
     slug: "atlas-2-0",
-    title: "Wzly Atlas 2.0：企业级大模型平台重大更新",
+    title: "unrealm-ai Atlas 2.0：企业级大模型平台重大更新",
     date: "2026-04-22",
     category: "产品更新",
   },

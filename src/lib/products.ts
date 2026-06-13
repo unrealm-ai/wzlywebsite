@@ -32,7 +32,7 @@ export function getCategoryLabel(category: Product["category"]) {
 export const PRODUCTS: Product[] = [
   {
     id: "atlas",
-    name: "Wzly Atlas",
+    name: "unrealm-ai Atlas",
     tagline: "企业级大模型应用平台",
     description:
       "面向企业的一站式大模型应用平台，支持模型微调、知识库、Prompt 管理与可观测部署。",
@@ -62,7 +62,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: "compass",
-    name: "Wzly Compass",
+    name: "unrealm-ai Compass",
     tagline: "行业知识智能助手",
     description:
       "针对法律、金融、医疗等专业领域的知识助手，融合领域语料与推理能力，输出可靠结论。",

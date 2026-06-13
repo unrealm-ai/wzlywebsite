@@ -3,6 +3,7 @@ import { ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { PageHero } from "@/components/sections/PageHero";
 import { Reveal } from "@/components/motion/Reveal";
+import { NEWS_ITEMS } from "@/lib/news";
 import { buildPageMetadata } from "@/lib/seo";
 
 export const metadata = buildPageMetadata({
@@ -10,34 +11,6 @@ export const metadata = buildPageMetadata({
   description: "未知领域的最新动态、产品发布与行业洞察。",
   path: "/news",
 });
-
-// 临时占位数据；MDX 模块接入后将由 lib/news.ts 提供
-const PLACEHOLDER_NEWS = [
-  {
-    slug: "welcome",
-    title: "未知领域正式发布：探索智能体的新边界",
-    excerpt:
-      "我们相信，下一代生产力源自人与智能体的协作。今天，我们正式向公众介绍未知领域。",
-    date: "2026-05-10",
-    category: "公司动态",
-  },
-  {
-    slug: "atlas-2-0",
-    title: "Wzly Atlas 2.0：企业级大模型平台重大更新",
-    excerpt:
-      "新版本带来多模型路由、Prompt 版本管理与更完善的可观测能力。",
-    date: "2026-04-22",
-    category: "产品更新",
-  },
-  {
-    slug: "agent-studio-preview",
-    title: "Agent Studio 公测开启，可视化构建智能体",
-    excerpt:
-      "通过拖拽式工作流，将复杂的多步任务交给智能体自动完成。",
-    date: "2026-04-05",
-    category: "产品发布",
-  },
-];
 
 export default function NewsPage() {
   return (
@@ -51,7 +24,7 @@ export default function NewsPage() {
       <section className="py-20 sm:py-28">
         <Container>
           <ul className="divide-y divide-[var(--line)] border-t border-b border-[var(--line)]">
-            {PLACEHOLDER_NEWS.map((item, idx) => (
+            {NEWS_ITEMS.map((item, idx) => (
               <Reveal key={item.slug} delay={idx * 0.05}>
                 <li>
                   <Link

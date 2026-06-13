@@ -14,29 +14,34 @@ const geistMono = Geist_Mono({
   display: "swap",
 });
 
+const siteOrigin =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://unrealm-ai.github.io";
+const siteBasePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+const siteUrl = new URL(siteBasePath || "/", siteOrigin).toString();
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://wzly.example.com"),
+  metadataBase: new URL(siteOrigin),
   title: {
-    default: "未知领域 Wzly — AI 与智能体的新边界",
-    template: "%s | 未知领域 Wzly",
+    default: "未知领域 unrealm-ai — AI 与智能体的新边界",
+    template: "%s | 未知领域 unrealm-ai",
   },
   description:
-    "未知领域（Wzly）是一家专注于大模型与智能体技术的 AI 公司，为企业提供下一代智能产品与服务。",
-  keywords: ["AI", "大模型", "智能体", "Agent", "未知领域", "Wzly", "LLM"],
+    "未知领域（unrealm-ai）是一家专注于大模型与智能体技术的 AI 公司，为企业提供下一代智能产品与服务。",
+  keywords: ["AI", "大模型", "智能体", "Agent", "未知领域", "unrealm-ai", "LLM"],
   authors: [{ name: "未知领域" }],
-  creator: "未知领域 Wzly",
+  creator: "未知领域 unrealm-ai",
   openGraph: {
     type: "website",
     locale: "zh_CN",
-    url: "https://wzly.example.com",
-    siteName: "未知领域 Wzly",
-    title: "未知领域 Wzly — AI 与智能体的新边界",
+    url: siteUrl,
+    siteName: "未知领域 unrealm-ai",
+    title: "未知领域 unrealm-ai — AI 与智能体的新边界",
     description:
       "专注于大模型与智能体技术的 AI 公司，为企业提供下一代智能产品与服务。",
   },
   twitter: {
     card: "summary_large_image",
-    title: "未知领域 Wzly",
+    title: "未知领域 unrealm-ai",
     description:
       "专注于大模型与智能体技术的 AI 公司，为企业提供下一代智能产品与服务。",
   },

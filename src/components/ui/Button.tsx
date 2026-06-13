@@ -66,6 +66,7 @@ interface ButtonLinkProps extends ButtonBaseProps {
   href: string;
   external?: boolean;
   style?: CSSProperties;
+  onClick?: ComponentPropsWithoutRef<"a">["onClick"];
 }
 
 export function ButtonLink({
@@ -75,6 +76,7 @@ export function ButtonLink({
   style,
   href,
   external,
+  onClick,
   children,
 }: ButtonLinkProps) {
   const mergedClass = cn(baseClasses, sizeClasses[size], className);
@@ -88,6 +90,7 @@ export function ButtonLink({
         rel="noopener noreferrer"
         className={mergedClass}
         style={mergedStyle}
+        onClick={onClick}
       >
         {children}
       </a>
@@ -95,7 +98,12 @@ export function ButtonLink({
   }
 
   return (
-    <Link href={href} className={mergedClass} style={mergedStyle}>
+    <Link
+      href={href}
+      className={mergedClass}
+      style={mergedStyle}
+      onClick={onClick}
+    >
       {children}
     </Link>
   );

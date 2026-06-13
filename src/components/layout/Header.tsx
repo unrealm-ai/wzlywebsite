@@ -23,11 +23,6 @@ export function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // 路由变化时自动关闭移动菜单
-  useEffect(() => {
-    setMobileOpen(false);
-  }, [pathname]);
-
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
@@ -108,6 +103,7 @@ export function Header() {
                       ? "text-[var(--fg)] bg-[var(--surface)]"
                       : "text-[var(--muted)] hover:text-[var(--fg)] hover:bg-[var(--surface)]",
                   )}
+                  onClick={() => setMobileOpen(false)}
                 >
                   {item.label}
                 </Link>
@@ -118,6 +114,7 @@ export function Header() {
                   size="md"
                   variant="primary"
                   className="w-full"
+                  onClick={() => setMobileOpen(false)}
                 >
                   联系我们
                 </ButtonLink>

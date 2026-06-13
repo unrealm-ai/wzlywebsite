@@ -14,7 +14,7 @@ export const NAV_ITEMS: NavItem[] = [
 
 export const SITE = {
   name: "未知领域",
-  brandEn: "Wzly",
+  brandEn: "unrealm-ai",
   tagline: "AI 与智能体的新边界",
   email: "contact@wzly.example.com",
   copyrightYear: new Date().getFullYear(),
