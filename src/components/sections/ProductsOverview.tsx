@@ -1,65 +1,129 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/layout/Container";
-import { SectionHeading } from "@/components/layout/SectionHeading";
 import { Reveal } from "@/components/motion/Reveal";
 import { PRODUCTS, getStatusLabel, getCategoryLabel } from "@/lib/products";
 
-// 产品矩阵概览（首页用）
+const PRODUCT_VISUAL_META: Record<string, { index: string; signal: string }> = {
+  atlas: { index: "P01", signal: "统一模型、知识与观测" },
+  "agent-studio": { index: "P02", signal: "可执行任务编排" },
+  compass: { index: "P03", signal: "专业知识与来源追踪" },
+  consulting: { index: "P04", signal: "从场景到生产化" },
+};
+
 export function ProductsOverview() {
+  const [primaryProduct, ...secondaryProducts] = PRODUCTS;
+
   return (
-    <section className="py-24 sm:py-32 bg-[var(--surface)]">
+    <section className="relative overflow-hidden bg-[var(--bg)] py-20 sm:py-28">
       <Container>
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+        <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
           <Reveal>
-            <SectionHeading
-              eyebrow="产品矩阵"
-              title="一套面向智能化的产品与服务"
-            />
+            <div className="lg:col-span-7">
+              <p className="mb-4 text-xs font-medium uppercase tracking-[0.18em] text-[var(--accent)]">
+                Product Map
+              </p>
+              <h2 className="max-w-3xl text-3xl font-semibold leading-tight text-[var(--fg)] sm:text-5xl">
+                一套面向智能化的产品与服务
+              </h2>
+            </div>
           </Reveal>
-          <Reveal delay={0.1}>
-            <Link
-              href="/products"
-              className="inline-flex items-center gap-1.5 text-sm text-[var(--fg)] hover:opacity-70 transition-opacity"
-            >
-              查看完整产品矩阵
-              <ArrowUpRight className="h-4 w-4" aria-hidden />
-            </Link>
+          <Reveal delay={0.08}>
+            <div className="lg:col-span-5 lg:text-right">
+              <Link
+                href="/products"
+                className="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--fg)] transition-colors hover:text-[var(--accent-strong)]"
+              >
+                查看完整产品矩阵
+                <ArrowUpRight className="h-4 w-4" aria-hidden />
+              </Link>
+            </div>
           </Reveal>
         </div>
 
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
-          {PRODUCTS.slice(0, 4).map((product, idx) => (
-            <Reveal key={product.id} delay={idx * 0.06}>
-              <Link
-                href={`/products#${product.id}`}
-                className="group block bg-[var(--bg)] border border-[var(--line)] p-8 sm:p-10 transition-colors hover:border-[var(--fg)] h-full"
-              >
-                <div className="flex items-center justify-between mb-6">
-                  <span className="text-xs uppercase tracking-wider text-[var(--subtle)]">
-                    {getCategoryLabel(product.category)}
+        <Reveal delay={0.12}>
+          <div className="mt-12 overflow-hidden border border-[var(--line)] bg-[var(--surface-elevated)]">
+            <Link
+              href={`/products#${primaryProduct.id}`}
+              className="group grid gap-8 p-6 transition-colors hover:bg-[var(--surface)] sm:p-9 lg:grid-cols-12 lg:gap-12"
+            >
+              <div className="lg:col-span-5">
+                <div className="mb-8 flex items-center gap-3">
+                  <span className="font-mono text-sm text-[var(--accent)]">
+                    {PRODUCT_VISUAL_META[primaryProduct.id]?.index}
                   </span>
-                  <span className="text-xs px-2 py-0.5 border border-[var(--line)] text-[var(--muted)] rounded-full">
-                    {getStatusLabel(product.status)}
+                  <span className="h-px flex-1 bg-[var(--line-strong)]" />
+                  <span className="border border-[var(--line)] px-2 py-1 text-xs text-[var(--muted)]">
+                    {getStatusLabel(primaryProduct.status)}
                   </span>
                 </div>
-                <h3 className="text-2xl font-semibold tracking-tight">
-                  {product.name}
+                <p className="text-xs uppercase tracking-[0.16em] text-[var(--subtle)]">
+                  {getCategoryLabel(primaryProduct.category)}
+                </p>
+                <h3 className="mt-4 text-3xl font-semibold leading-tight text-[var(--fg)] sm:text-5xl">
+                  {primaryProduct.name}
                 </h3>
-                <p className="mt-2 text-base text-[var(--fg)]">
-                  {product.tagline}
+              </div>
+
+              <div className="lg:col-span-7">
+                <p className="text-lg font-medium text-[var(--fg)]">
+                  {primaryProduct.tagline}
                 </p>
-                <p className="mt-4 text-sm text-[var(--muted)] leading-relaxed">
-                  {product.description}
+                <p className="mt-5 max-w-2xl text-base leading-relaxed text-[var(--muted)]">
+                  {primaryProduct.description}
                 </p>
-                <div className="mt-8 flex items-center gap-1.5 text-sm text-[var(--fg)] group-hover:gap-3 transition-all">
+                <div className="mt-8 grid gap-3 sm:grid-cols-2">
+                  {primaryProduct.features.slice(0, 4).map((feature) => (
+                    <span
+                      key={feature}
+                      className="border-l border-[var(--accent)] pl-3 text-sm leading-relaxed text-[var(--fg)]"
+                    >
+                      {feature}
+                    </span>
+                  ))}
+                </div>
+                <span className="mt-10 inline-flex items-center gap-1.5 text-sm font-medium text-[var(--fg)] transition-colors group-hover:text-[var(--accent-strong)]">
                   了解详情
                   <ArrowUpRight className="h-4 w-4" aria-hidden />
-                </div>
-              </Link>
-            </Reveal>
-          ))}
-        </div>
+                </span>
+              </div>
+            </Link>
+
+            <div className="divide-y divide-[var(--line)] border-t border-[var(--line)]">
+              {secondaryProducts.map((product) => {
+                const meta = PRODUCT_VISUAL_META[product.id];
+                return (
+                  <Link
+                    key={product.id}
+                    href={`/products#${product.id}`}
+                    className="group grid gap-5 p-6 transition-colors hover:bg-[var(--surface)] sm:grid-cols-[112px_1fr_auto] sm:items-center sm:p-7"
+                  >
+                    <div className="font-mono text-sm text-[var(--accent)]">
+                      {meta?.index}
+                    </div>
+                    <div>
+                      <div className="flex flex-wrap items-center gap-2 text-xs uppercase tracking-[0.14em] text-[var(--subtle)]">
+                        <span>{getCategoryLabel(product.category)}</span>
+                        <span className="h-1 w-1 rounded-full bg-[var(--accent)]" />
+                        <span>{getStatusLabel(product.status)}</span>
+                      </div>
+                      <h3 className="mt-2 text-2xl font-semibold text-[var(--fg)]">
+                        {product.name}
+                      </h3>
+                      <p className="mt-2 max-w-3xl text-sm leading-relaxed text-[var(--muted)]">
+                        {product.tagline} / {meta?.signal}
+                      </p>
+                    </div>
+                    <span className="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--fg)] transition-colors group-hover:text-[var(--accent-strong)]">
+                      进入
+                      <ArrowUpRight className="h-4 w-4" aria-hidden />
+                    </span>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        </Reveal>
       </Container>
     </section>
   );

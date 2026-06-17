@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/layout/Container";
-import { SectionHeading } from "@/components/layout/SectionHeading";
 import { Reveal } from "@/components/motion/Reveal";
 
 interface NewsItem {
@@ -11,8 +10,6 @@ interface NewsItem {
   category: string;
 }
 
-// 首页"最新动态"区块。当前使用静态示例数据；
-// 新闻 MDX 模块就绪后将切换为从 lib/news.ts 读取。
 const PLACEHOLDER_NEWS: NewsItem[] = [
   {
     slug: "welcome",
@@ -36,51 +33,58 @@ const PLACEHOLDER_NEWS: NewsItem[] = [
 
 export function NewsTeaser() {
   return (
-    <section className="py-24 sm:py-32 bg-[var(--surface)]">
+    <section className="bg-[var(--surface)] py-20 sm:py-28">
       <Container>
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+        <div className="grid gap-8 border-b border-[var(--line)] pb-10 lg:grid-cols-12 lg:items-end">
           <Reveal>
-            <SectionHeading eyebrow="最新动态" title="保持探索的脚步" />
+            <div className="lg:col-span-7">
+              <p className="mb-4 text-xs font-medium uppercase tracking-[0.18em] text-[var(--accent)]">
+                Updates
+              </p>
+              <h2 className="text-3xl font-semibold leading-tight text-[var(--fg)] sm:text-5xl">
+                保持探索的脚步
+              </h2>
+            </div>
           </Reveal>
-          <Reveal delay={0.1}>
-            <Link
-              href="/news"
-              className="inline-flex items-center gap-1.5 text-sm text-[var(--fg)] hover:opacity-70 transition-opacity"
-            >
-              查看全部新闻
-              <ArrowUpRight className="h-4 w-4" aria-hidden />
-            </Link>
+          <Reveal delay={0.08}>
+            <div className="lg:col-span-5 lg:text-right">
+              <Link
+                href="/news"
+                className="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--fg)] transition-colors hover:text-[var(--accent-strong)]"
+              >
+                查看全部新闻
+                <ArrowUpRight className="h-4 w-4" aria-hidden />
+              </Link>
+            </div>
           </Reveal>
         </div>
 
-        <ul className="mt-12 divide-y divide-[var(--line)] border-y border-[var(--line)]">
+        <ul className="divide-y divide-[var(--line)]">
           {PLACEHOLDER_NEWS.map((item, idx) => (
             <Reveal key={item.slug} delay={idx * 0.05}>
               <li>
                 <Link
                   href={`/news/${item.slug}`}
-                  className="group flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-6 py-6 sm:py-8 hover:opacity-70 transition-opacity"
+                  className="group grid gap-4 py-7 transition-colors hover:text-[var(--accent-strong)] sm:grid-cols-[160px_1fr_auto] sm:items-center"
                 >
-                  <div className="flex items-baseline gap-6 flex-1 min-w-0">
-                    <time
-                      dateTime={item.date}
-                      className="text-xs uppercase tracking-wider text-[var(--subtle)] tabular-nums shrink-0 w-24"
-                    >
-                      {item.date.replace(/-/g, ".")}
-                    </time>
-                    <span className="text-base sm:text-lg font-medium text-[var(--fg)] truncate">
+                  <time
+                    dateTime={item.date}
+                    className="font-mono text-xs text-[var(--subtle)] tabular-nums"
+                  >
+                    {item.date.replace(/-/g, ".")}
+                  </time>
+                  <div>
+                    <span className="text-xs text-[var(--accent)]">
+                      {item.category}
+                    </span>
+                    <span className="mt-2 block text-xl font-medium leading-snug text-[var(--fg)] transition-colors group-hover:text-[var(--accent-strong)]">
                       {item.title}
                     </span>
                   </div>
-                  <div className="flex items-center gap-3 shrink-0 pl-30 sm:pl-0">
-                    <span className="text-xs text-[var(--muted)]">
-                      {item.category}
-                    </span>
-                    <ArrowUpRight
-                      className="h-4 w-4 text-[var(--muted)] group-hover:text-[var(--fg)] transition-colors"
-                      aria-hidden
-                    />
-                  </div>
+                  <ArrowUpRight
+                    className="h-4 w-4 text-[var(--muted)] transition-colors group-hover:text-[var(--accent-strong)]"
+                    aria-hidden
+                  />
                 </Link>
               </li>
             </Reveal>

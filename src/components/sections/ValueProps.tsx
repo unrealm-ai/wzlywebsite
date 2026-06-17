@@ -1,69 +1,75 @@
-import { Brain, Workflow, Shield, type LucideIcon } from "lucide-react";
 import { Container } from "@/components/layout/Container";
-import { SectionHeading } from "@/components/layout/SectionHeading";
 import { Reveal } from "@/components/motion/Reveal";
 
-interface ValueProp {
-  icon: LucideIcon;
-  title: string;
-  description: string;
-}
-
-const VALUE_PROPS: ValueProp[] = [
+const CAPABILITY_PATH = [
   {
-    icon: Brain,
-    title: "前沿模型能力",
+    step: "01",
+    title: "研究能力",
+    label: "Model Research",
     description:
-      "自研与领先开源模型结合，覆盖语言、视觉、推理等多模态能力，持续追踪并落地最新研究成果。",
+      "追踪多模态、推理、智能体等前沿方向，把尚不稳定的能力拆解为可验证的技术模块。",
   },
   {
-    icon: Workflow,
-    title: "可落地的智能体",
+    step: "02",
+    title: "工程落地",
+    label: "Agent Engineering",
     description:
-      "从工作流编排到工具调用，构建真正能完成任务的智能体系统；面向业务，而非演示。",
+      "围绕工作流、工具调用、记忆与观测构建系统，让 AI 从演示走向真实任务执行。",
   },
   {
-    icon: Shield,
-    title: "企业级可信",
+    step: "03",
+    title: "企业治理",
+    label: "Enterprise Control",
     description:
-      "数据隔离、私有化部署、可观测与可审计 —— 让 AI 能力放心地嵌入生产环境。",
+      "以权限、审计、数据隔离和私有化部署为底座，让智能能力安全进入生产环境。",
   },
-];
+] as const;
 
 export function ValueProps() {
   return (
-    <section className="py-24 sm:py-32 border-t border-[var(--line)]">
+    <section className="relative overflow-hidden bg-[var(--surface)] py-20 sm:py-28">
       <Container>
         <Reveal>
-          <SectionHeading
-            eyebrow="我们的能力"
-            title="把不确定的前沿，变成确定的生产力"
-            description="技术的价值在于解决真实问题。我们以三个核心能力支撑客户的智能化升级。"
-          />
+          <div className="grid gap-8 border-b border-[var(--line)] pb-10 lg:grid-cols-12 lg:items-end">
+            <div className="lg:col-span-7">
+              <p className="mb-4 text-xs font-medium uppercase tracking-[0.18em] text-[var(--accent)]">
+                Capability Path
+              </p>
+              <h2 className="max-w-3xl text-3xl font-semibold leading-tight text-[var(--fg)] sm:text-5xl">
+                从未知能力，到稳定生产系统
+              </h2>
+            </div>
+            <p className="max-w-xl text-base leading-relaxed text-[var(--muted)] lg:col-span-5">
+              我们不把 AI 包装成一次性演示，而是沿着研究、工程和治理三个层面，把前沿能力变成组织可以长期使用的基础设施。
+            </p>
+          </div>
         </Reveal>
 
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-px bg-[var(--line)] border border-[var(--line)]">
-          {VALUE_PROPS.map((item, idx) => {
-            const Icon = item.icon;
-            return (
-              <Reveal key={item.title} delay={idx * 0.08}>
-                <article className="bg-[var(--bg)] p-8 sm:p-10 h-full">
-                  <Icon
-                    className="h-7 w-7 text-[var(--fg)]"
-                    aria-hidden
-                    strokeWidth={1.5}
-                  />
-                  <h3 className="mt-6 text-xl font-semibold tracking-tight">
+        <ol className="grid grid-cols-1 lg:grid-cols-3">
+          {CAPABILITY_PATH.map((item, idx) => (
+            <Reveal key={item.step} delay={idx * 0.06}>
+              <li className="group relative min-h-[300px] border-b border-[var(--line)] py-9 lg:border-b-0 lg:border-r lg:px-8 lg:first:pl-0 lg:last:border-r-0 lg:last:pr-0">
+                <div className="flex items-start justify-between gap-6">
+                  <span className="font-mono text-sm text-[var(--accent)]">
+                    {item.step}
+                  </span>
+                  <span className="mt-2 h-px flex-1 bg-[var(--line-strong)] transition-colors group-hover:bg-[var(--accent)]" />
+                </div>
+                <div className="mt-16">
+                  <p className="mb-3 text-xs uppercase tracking-[0.16em] text-[var(--subtle)]">
+                    {item.label}
+                  </p>
+                  <h3 className="text-2xl font-semibold text-[var(--fg)]">
                     {item.title}
                   </h3>
-                  <p className="mt-3 text-[var(--muted)] leading-relaxed">
+                  <p className="mt-5 max-w-md text-[15px] leading-relaxed text-[var(--muted)]">
                     {item.description}
                   </p>
-                </article>
-              </Reveal>
-            );
-          })}
-        </div>
+                </div>
+              </li>
+            </Reveal>
+          ))}
+        </ol>
       </Container>
     </section>
   );

@@ -2,7 +2,7 @@
 
 /* ----------------------------------------------------------------------------
  * 未知领域 — 设计系统 (Tailwind v4, CSS-first)
- * 极简现代 + 大留白；95% 黑白灰 + 5% 品牌色
+ * 黑白灰为主，淡橙点睛。
  *
  * 注意：自定义颜色变量使用独立命名空间（--bg / --fg / ...）而非 --color-*，
  * 避免影响 Tailwind v4 默认调色板（neutral / white 等）的注入。
@@ -12,14 +12,24 @@
   color-scheme: light;
 
   /* 站点色板 */
-  --bg: #ffffff;
-  --fg: #0a0a0a;
-  --muted: #6b7280;
-  --subtle: #9ca3af;
-  --line: #e5e5e5;
-  --surface: #fafafa;
-  --brand: #2f5bff;
-  --brand-hover: #1e47e6;
+  --bg: #f8f6f1;
+  --fg: #11100e;
+  --ink: #11100e;
+  --muted: #6f6b64;
+  --subtle: #9f988d;
+  --line: #ded8cd;
+  --line-strong: #c9c0b4;
+  --surface: #f0ece4;
+  --surface-elevated: #fffdfa;
+  --brand: #c58a52;
+  --brand-hover: #9f6636;
+  --brand-soft: #f5e5d3;
+  --accent: #c58a52;
+  --accent-strong: #9f6636;
+  --accent-light: #e0b47f;
+  --mint: #7c8178;
+  --amber: #c58a52;
+  --shadow-soft: 0 18px 48px -36px rgba(17, 16, 14, 0.34);
 }
 
 @theme {
@@ -37,6 +47,12 @@
 /* ----------------------------------------------------------------------------
  * 基础元素
  * -------------------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
 html {
   scroll-behavior: smooth;
@@ -61,6 +77,14 @@ body {
 a {
   text-decoration: none;
   color: inherit;
+}
+
+.hairline-card {
+  background:
+    linear-gradient(180deg, rgba(255, 253, 250, 0.98), rgba(255, 253, 250, 0.94)),
+    var(--surface-elevated);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-soft);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -88,7 +112,7 @@ a {
 .prose h1 {
   font-size: 3rem;
   line-height: 1.1;
-  letter-spacing: -0.015em;
+  letter-spacing: 0;
   font-weight: 600;
   margin-top: 3rem;
   margin-bottom: 1.5rem;
@@ -97,7 +121,7 @@ a {
 .prose h2 {
   font-size: 2rem;
   line-height: 1.2;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
   font-weight: 600;
   margin-top: 3rem;
   margin-bottom: 1rem;

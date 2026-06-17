@@ -27,10 +27,11 @@ export default function AboutPage() {
 
       <section className="py-24 sm:py-32">
         <Container>
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
+          <div className="hairline-card grid grid-cols-1 gap-12 rounded-lg p-7 md:grid-cols-12 sm:p-10">
             <Reveal>
               <div className="md:col-span-5">
-                <h2 className="text-3xl font-semibold tracking-tight">
+                <div className="mb-7 h-1 w-16 rounded-full bg-[var(--mint)]" />
+                <h2 className="text-3xl font-semibold">
                   使命
                 </h2>
               </div>
@@ -52,25 +53,25 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      <section className="py-24 sm:py-32 border-t border-[var(--line)] bg-[var(--surface)]">
+      <section className="border-t border-[var(--line)] bg-[var(--surface)] py-24 sm:py-32">
         <Container>
           <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
             <Reveal>
               <div className="md:col-span-5">
-                <h2 className="text-3xl font-semibold tracking-tight">
+                <h2 className="text-3xl font-semibold">
                   发展历程
                 </h2>
               </div>
             </Reveal>
             <div className="md:col-span-7">
-              <ol className="space-y-12">
+              <ol className="relative space-y-8 before:absolute before:left-[4.75rem] before:top-2 before:h-[calc(100%-1rem)] before:w-px before:bg-[var(--line-strong)]">
                 {MILESTONES.map((m, idx) => (
                   <Reveal key={m.year} delay={idx * 0.06}>
-                    <li className="grid grid-cols-[80px_1fr] gap-6 items-baseline">
+                    <li className="relative grid grid-cols-[80px_1fr] items-baseline gap-6">
                       <span className="text-2xl font-semibold tabular-nums text-[var(--fg)]">
                         {m.year}
                       </span>
-                      <div>
+                      <div className="hairline-card rounded-lg p-5">
                         <h3 className="text-lg font-medium">{m.title}</h3>
                         <p className="mt-2 text-[var(--muted)] leading-relaxed">
                           {m.desc}

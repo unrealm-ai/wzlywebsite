@@ -29,9 +29,9 @@ export function Header() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 transition-[background-color,border-color,backdrop-filter] duration-300 ease-out",
+        "sticky top-0 z-50 transition-[background-color,border-color,backdrop-filter,box-shadow] duration-300 ease-out",
         scrolled
-          ? "bg-[var(--bg)]/85 backdrop-blur-md border-b border-[var(--line)]"
+          ? "border-b border-[var(--line)] bg-[var(--bg)] shadow-[0_10px_30px_-28px_rgba(17,16,14,0.8)] backdrop-blur-md"
           : "bg-transparent border-b border-transparent",
       )}
     >
@@ -50,10 +50,10 @@ export function Header() {
                   key={item.href}
                   href={item.href}
                   className={cn(
-                    "text-sm transition-colors duration-200",
+                    "rounded-md px-2.5 py-1.5 text-sm transition-colors duration-200",
                     isActive(item.href)
-                      ? "text-[var(--fg)]"
-                      : "text-[var(--muted)] hover:text-[var(--fg)]",
+                      ? "bg-[var(--surface)] text-[var(--fg)]"
+                      : "text-[var(--muted)] hover:bg-[var(--surface)] hover:text-[var(--fg)]",
                   )}
                 >
                   {item.label}
@@ -69,7 +69,7 @@ export function Header() {
 
             <button
               type="button"
-              className="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-md hover:bg-[var(--surface)] transition-colors"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-[var(--line)] bg-[var(--surface-elevated)] transition-colors hover:bg-[var(--surface)] md:hidden"
               aria-label={mobileOpen ? "关闭菜单" : "打开菜单"}
               aria-expanded={mobileOpen}
               onClick={() => setMobileOpen((v) => !v)}
@@ -86,7 +86,7 @@ export function Header() {
         {/* 移动端展开菜单 */}
         {mobileOpen && (
           <div
-            className="md:hidden border-t border-[var(--line)] py-4"
+            className="border-t border-[var(--line)] bg-[var(--bg)] py-4 backdrop-blur md:hidden"
             id="mobile-menu"
           >
             <nav

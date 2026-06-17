@@ -53,7 +53,7 @@ export default function ContactPage() {
                     aria-hidden
                     strokeWidth={1.5}
                   />
-                  <div className="mt-5 text-xs uppercase tracking-wider text-[var(--subtle)]">
+                  <div className="mt-5 text-xs uppercase text-[var(--subtle)]">
                     {c.label}
                   </div>
                   <div className="mt-1 text-base font-medium text-[var(--fg)]">
@@ -66,12 +66,12 @@ export default function ContactPage() {
                   {c.href ? (
                     <a
                       href={c.href}
-                      className="block border border-[var(--line)] p-8 hover:border-[var(--fg)] transition-colors h-full"
+                      className="hairline-card block h-full rounded-lg p-7 transition-transform duration-300 hover:-translate-y-1"
                     >
                       {inner}
                     </a>
                   ) : (
-                    <div className="block border border-[var(--line)] p-8 h-full">
+                    <div className="hairline-card block h-full rounded-lg p-7">
                       {inner}
                     </div>
                   )}
@@ -83,7 +83,8 @@ export default function ContactPage() {
           <div id="contact-form" className="grid grid-cols-1 md:grid-cols-12 gap-12 scroll-mt-24">
             <Reveal>
               <div className="md:col-span-5">
-                <h2 className="text-3xl font-semibold tracking-tight">
+                <div className="mb-7 h-1 w-16 rounded-full bg-[var(--brand)]" />
+                <h2 className="text-3xl font-semibold">
                   发送合作需求
                 </h2>
                 <p className="mt-5 text-[var(--muted)] leading-relaxed">
@@ -96,7 +97,7 @@ export default function ContactPage() {
             </Reveal>
 
             <Reveal delay={0.08}>
-              <form className="md:col-span-7 space-y-5">
+              <form className="hairline-card space-y-5 rounded-lg p-6 md:col-span-7 sm:p-8">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
                     <label
@@ -109,7 +110,7 @@ export default function ContactPage() {
                       id="name"
                       type="text"
                       placeholder="请填写您的姓名"
-                      className="w-full h-11 px-4 bg-[var(--bg)] border border-[var(--line)] rounded-md text-sm focus:outline-none focus:border-[var(--fg)] transition-colors"
+                      className="h-11 w-full rounded-md border border-[var(--line)] bg-white px-4 text-sm transition-colors focus:border-[var(--fg)] focus:outline-none"
                     />
                   </div>
                   <div>
@@ -123,7 +124,7 @@ export default function ContactPage() {
                       id="company"
                       type="text"
                       placeholder="请填写公司名称"
-                      className="w-full h-11 px-4 bg-[var(--bg)] border border-[var(--line)] rounded-md text-sm focus:outline-none focus:border-[var(--fg)] transition-colors"
+                      className="h-11 w-full rounded-md border border-[var(--line)] bg-white px-4 text-sm transition-colors focus:border-[var(--fg)] focus:outline-none"
                     />
                   </div>
                 </div>
@@ -138,7 +139,7 @@ export default function ContactPage() {
                     id="email"
                     type="email"
                     placeholder="you@company.com"
-                    className="w-full h-11 px-4 bg-[var(--bg)] border border-[var(--line)] rounded-md text-sm focus:outline-none focus:border-[var(--fg)] transition-colors"
+                    className="h-11 w-full rounded-md border border-[var(--line)] bg-white px-4 text-sm transition-colors focus:border-[var(--fg)] focus:outline-none"
                   />
                 </div>
                 <div>
@@ -152,12 +153,12 @@ export default function ContactPage() {
                     id="message"
                     rows={5}
                     placeholder="请简要描述你的应用场景与目标..."
-                    className="w-full px-4 py-3 bg-[var(--bg)] border border-[var(--line)] rounded-md text-sm focus:outline-none focus:border-[var(--fg)] transition-colors resize-y"
+                    className="w-full resize-y rounded-md border border-[var(--line)] bg-white px-4 py-3 text-sm transition-colors focus:border-[var(--fg)] focus:outline-none"
                   />
                 </div>
                 <button
                   type="button"
-                  className="inline-flex items-center justify-center h-11 px-6 bg-[var(--fg)] text-[var(--bg)] text-sm font-medium rounded-md hover:opacity-85 transition-opacity"
+                  className="inline-flex h-11 items-center justify-center rounded-md bg-[var(--fg)] px-6 text-sm font-medium text-[var(--bg)] shadow-sm transition-[opacity,transform,box-shadow] hover:-translate-y-0.5 hover:opacity-90 hover:shadow-md"
                 >
                   提交需求
                 </button>

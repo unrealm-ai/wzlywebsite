@@ -9,15 +9,23 @@ interface PageHeroProps {
 // 内页通用 Hero（比首页 Hero 更轻量）
 export function PageHero({ eyebrow, title, description }: PageHeroProps) {
   return (
-    <section className="border-b border-[var(--line)]">
+    <section className="relative overflow-hidden border-b border-[var(--line)] bg-[var(--bg)]">
+      <div
+        className="absolute inset-x-0 top-0 h-full"
+        aria-hidden
+        style={{
+          background:
+            "linear-gradient(180deg, var(--surface) 0%, rgba(248,246,241,0) 78%)",
+        }}
+      />
       <Container>
-        <div className="pt-24 pb-16 sm:pt-32 sm:pb-20 max-w-4xl">
+        <div className="relative max-w-4xl pt-24 pb-16 sm:pt-32 sm:pb-20">
           {eyebrow && (
-            <p className="text-xs font-medium uppercase tracking-[0.16em] text-[var(--brand)] mb-4">
+            <p className="text-xs font-medium uppercase text-[var(--brand)] mb-4">
               {eyebrow}
             </p>
           )}
-          <h1 className="text-4xl sm:text-6xl font-semibold tracking-tight leading-[1.05] text-[var(--fg)]">
+          <h1 className="text-4xl font-semibold leading-[1.05] text-[var(--fg)] sm:text-6xl">
             {title}
           </h1>
           {description && (

@@ -45,7 +45,7 @@ export function Logo({ className, compact = false }: LogoProps) {
         <circle cx="21" cy="7" r="2" fill="currentColor" />
       </svg>
       {!compact && (
-        <span className="text-base font-semibold tracking-tight">
+        <span className="text-base font-semibold">
           未知领域
           <span className="ml-1 text-[var(--muted)] font-normal">AI</span>
         </span>

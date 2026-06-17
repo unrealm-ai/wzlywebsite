@@ -14,7 +14,7 @@ interface ButtonBaseProps {
 
 // 通用按钮基础样式（不含颜色）
 const baseClasses =
-  "inline-flex items-center justify-center gap-2 font-medium rounded-md transition-[color,background-color,border-color,opacity] duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:opacity-50 disabled:pointer-events-none";
+  "inline-flex items-center justify-center gap-2 rounded-md font-medium shadow-sm transition-[transform,color,background-color,border-color,opacity,box-shadow] duration-200 ease-out hover:-translate-y-0.5 hover:shadow-md active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:pointer-events-none disabled:opacity-50";
 
 const sizeClasses: Record<Size, string> = {
   sm: "h-9 px-4 text-sm",
@@ -25,17 +25,20 @@ const sizeClasses: Record<Size, string> = {
 // 颜色用 inline style 直接钉死，避免任何 Tailwind 任意值类的解析风险
 const variantStyles: Record<Variant, CSSProperties> = {
   primary: {
-    backgroundColor: "#0a0a0a",
+    backgroundColor: "#11100e",
     color: "#ffffff",
+    boxShadow: "0 12px 28px -16px rgba(17,16,14,0.65)",
   },
   ghost: {
     backgroundColor: "transparent",
-    color: "#0a0a0a",
+    color: "#11100e",
   },
   outline: {
-    backgroundColor: "#ffffff",
-    color: "#0a0a0a",
-    border: "1px solid #e5e5e5",
+    backgroundColor: "#fffdfa",
+    color: "#11100e",
+    borderWidth: "1px",
+    borderStyle: "solid",
+    borderColor: "#ded8cd",
   },
 };
 

@@ -46,17 +46,17 @@ export default async function NewsDetailPage({ params }: PageProps) {
           返回新闻列表
         </Link>
 
-        <p className="text-xs uppercase tracking-[0.16em] text-[var(--brand)] mb-4">
+        <p className="text-xs uppercase text-[var(--brand)] mb-4">
           {item.category}
         </p>
-        <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight leading-tight">
+        <h1 className="text-4xl font-semibold leading-tight sm:text-5xl">
           {item.title}
         </h1>
         <time className="block mt-6 text-sm text-[var(--muted)]">
           {item.date.replace(/-/g, ".")}
         </time>
 
-        <div className="prose mt-12">
+        <div className="prose hairline-card mt-12 rounded-lg p-6 sm:p-8">
           <p>{item.excerpt}</p>
           <p>
             这里将渲染 MDX 内容。当前为占位说明：在阶段 6 中将完成 MDX

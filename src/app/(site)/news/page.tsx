@@ -23,13 +23,13 @@ export default function NewsPage() {
 
       <section className="py-20 sm:py-28">
         <Container>
-          <ul className="divide-y divide-[var(--line)] border-t border-b border-[var(--line)]">
+          <ul className="space-y-5">
             {NEWS_ITEMS.map((item, idx) => (
               <Reveal key={item.slug} delay={idx * 0.05}>
                 <li>
                   <Link
                     href={`/news/${item.slug}`}
-                    className="group block py-10 hover:opacity-80 transition-opacity"
+                    className="hairline-card group block rounded-lg p-6 transition-transform duration-300 hover:-translate-y-1 sm:p-8"
                   >
                     <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-start">
                       <div className="md:col-span-3 flex items-center gap-3">
@@ -44,7 +44,7 @@ export default function NewsPage() {
                         </span>
                       </div>
                       <div className="md:col-span-8">
-                        <h2 className="text-xl sm:text-2xl font-semibold tracking-tight text-[var(--fg)]">
+                        <h2 className="text-xl font-semibold text-[var(--fg)] sm:text-2xl">
                           {item.title}
                         </h2>
                         <p className="mt-2 text-[var(--muted)] leading-relaxed">

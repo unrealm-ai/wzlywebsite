@@ -10,6 +10,7 @@ export function Container({
   className,
   width = "page",
   children,
+  style,
   ...rest
 }: ContainerProps) {
   return (
@@ -21,6 +22,7 @@ export function Container({
         width === "wide" && "max-w-none",
         className,
       )}
+      style={{ boxSizing: "border-box", ...style }}
       {...rest}
     >
       {children}

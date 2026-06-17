@@ -12,6 +12,13 @@ export const metadata = buildPageMetadata({
   path: "/products",
 });
 
+const PRODUCT_ACCENTS = [
+  "var(--brand)",
+  "var(--mint)",
+  "#7c3aed",
+  "var(--amber)",
+];
+
 export default function ProductsPage() {
   return (
     <>
@@ -23,52 +30,61 @@ export default function ProductsPage() {
 
       <section className="py-20 sm:py-28">
         <Container>
-          <div className="space-y-24">
-            {PRODUCTS.map((product, idx) => (
-              <Reveal key={product.id}>
-                <article
-                  id={product.id}
-                  className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 scroll-mt-24"
-                >
-                  <div className="md:col-span-5">
-                    <div className="flex items-center gap-3 mb-4">
-                      <span className="text-xs uppercase tracking-wider text-[var(--subtle)]">
-                        0{idx + 1} · {getCategoryLabel(product.category)}
-                      </span>
-                      <span className="text-xs px-2 py-0.5 border border-[var(--line)] text-[var(--muted)] rounded-full">
-                        {getStatusLabel(product.status)}
-                      </span>
+          <div className="space-y-6">
+            {PRODUCTS.map((product, idx) => {
+              const accent = PRODUCT_ACCENTS[idx] ?? "var(--brand)";
+              return (
+                <Reveal key={product.id}>
+                  <article
+                    id={product.id}
+                    className="hairline-card grid scroll-mt-24 grid-cols-1 gap-8 rounded-lg p-7 md:grid-cols-12 md:gap-16 sm:p-9"
+                  >
+                    <div className="md:col-span-5">
+                      <div
+                        className="mb-7 h-1 w-16 rounded-full"
+                        style={{ background: accent }}
+                        aria-hidden
+                      />
+                      <div className="flex items-center gap-3 mb-4">
+                        <span className="text-xs uppercase text-[var(--subtle)]">
+                          0{idx + 1} · {getCategoryLabel(product.category)}
+                        </span>
+                        <span className="rounded-md border border-[var(--line)] bg-white px-2 py-0.5 text-xs text-[var(--muted)]">
+                          {getStatusLabel(product.status)}
+                        </span>
+                      </div>
+                      <h2 className="text-3xl font-semibold sm:text-4xl">
+                        {product.name}
+                      </h2>
+                      <p className="mt-3 text-lg text-[var(--fg)]">
+                        {product.tagline}
+                      </p>
                     </div>
-                    <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight">
-                      {product.name}
-                    </h2>
-                    <p className="mt-3 text-lg text-[var(--fg)]">
-                      {product.tagline}
-                    </p>
-                  </div>
-                  <div className="md:col-span-7">
-                    <p className="text-base text-[var(--muted)] leading-relaxed">
-                      {product.description}
-                    </p>
-                    <ul className="mt-8 space-y-3">
-                      {product.features.map((feature) => (
-                        <li
-                          key={feature}
-                          className="flex items-start gap-3 text-[var(--fg)]"
-                        >
-                          <Check
-                            className="h-5 w-5 text-[var(--brand)] shrink-0 mt-0.5"
-                            strokeWidth={2}
-                            aria-hidden
-                          />
-                          <span>{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </article>
-              </Reveal>
-            ))}
+                    <div className="md:col-span-7">
+                      <p className="text-base text-[var(--muted)] leading-relaxed">
+                        {product.description}
+                      </p>
+                      <ul className="mt-8 space-y-3">
+                        {product.features.map((feature) => (
+                          <li
+                            key={feature}
+                            className="flex items-start gap-3 text-[var(--fg)]"
+                          >
+                            <Check
+                              className="mt-0.5 h-5 w-5 shrink-0 text-[var(--brand)]"
+                              strokeWidth={2}
+                              aria-hidden
+                              style={{ color: accent }}
+                            />
+                            <span>{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </article>
+                </Reveal>
+              );
+            })}
           </div>
         </Container>
       </section>
