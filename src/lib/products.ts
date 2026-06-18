@@ -31,6 +31,36 @@ export function getCategoryLabel(category: Product["category"]) {
 
 export const PRODUCTS: Product[] = [
   {
+    id: "agent-studio",
+    name: "Cloud Managed Agents",
+    tagline: "云上托管的 Agents，1 秒钟启动工作 Agent",
+    description:
+      "云上托管的 Agents，1 秒钟即可启动你的工作 Agent。不论是与你一起协作，还是自动在后台执行工作，都可即开即用。",
+    features: [
+      "可选择 Agent 内核：codex / claude-code / openclaw 等",
+      "多模型自由切换与选择",
+      "即开即用，支持实时协作",
+      "可在后台自动执行工作",
+    ],
+    status: "preview",
+    category: "agent",
+  },
+  {
+    id: "xiaozeng-growthwise",
+    name: "小增 App",
+    tagline: "AI 内容运营与增长智能助手",
+    description:
+      "面向老板、创作者和运营团队，把素材变成选题，把选题变成多平台内容，再把发布反馈变成下一轮增长判断。",
+    features: [
+      "灵感库沉淀产品卖点、用户问题、竞品素材和评论反馈",
+      "选题台按人群、场景、痛点、平台和转化意图生成主题池",
+      "内容稿覆盖小红书笔记、短视频脚本、公众号大纲和私域文案",
+      "发布编排与增长复盘形成持续内容增长闭环",
+    ],
+    status: "coming-soon",
+    category: "service",
+  },
+  {
     id: "atlas",
     name: "unrealm-ai Atlas",
     tagline: "企业级大模型应用平台",
@@ -44,21 +74,6 @@ export const PRODUCTS: Product[] = [
     ],
     status: "available",
     category: "platform",
-  },
-  {
-    id: "agent-studio",
-    name: "Agent Studio",
-    tagline: "可视化智能体构建工坊",
-    description:
-      "通过可视化工作流编排，快速构建可执行复杂任务的智能体，支持工具调用、记忆、多智能体协作。",
-    features: [
-      "拖拽式工作流编排",
-      "丰富的工具与 MCP 生态",
-      "记忆与上下文管理",
-      "多智能体协同（Multi-Agent）",
-    ],
-    status: "preview",
-    category: "agent",
   },
   {
     id: "compass",

@@ -30,7 +30,7 @@ const PRINCIPLES = [
 const TEAM_MEMBERS = [
   {
     initials: "YS",
-    name: "阎肃",
+    name: "阎晓",
     title: "AI 工程技术总监",
     focus: "负责 AI 工程体系、平台架构与生产化落地。",
   },
@@ -57,7 +57,7 @@ const TEAM_MEMBERS = [
 const MILESTONES = [
   { year: "2024", title: "公司创立", desc: "由 AI 研究、工程与产品团队共同发起。" },
   { year: "2025", title: "首款产品发布", desc: "unrealm-ai Atlas 1.0 上线，服务首批企业客户。" },
-  { year: "2026", title: "智能体平台公测", desc: "Agent Studio 与 Compass 行业助手发布。" },
+  { year: "2026", title: "智能体平台公测", desc: "Cloud Managed Agents 与 Compass 行业助手发布。" },
 ] as const;
 
 export default function AboutPage() {

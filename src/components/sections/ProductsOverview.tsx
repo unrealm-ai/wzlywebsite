@@ -5,10 +5,11 @@ import { Reveal } from "@/components/motion/Reveal";
 import { PRODUCTS, getStatusLabel, getCategoryLabel } from "@/lib/products";
 
 const PRODUCT_VISUAL_META: Record<string, { index: string; signal: string }> = {
-  atlas: { index: "P01", signal: "统一模型、知识与观测" },
-  "agent-studio": { index: "P02", signal: "可执行任务编排" },
-  compass: { index: "P03", signal: "专业知识与来源追踪" },
-  consulting: { index: "P04", signal: "从场景到生产化" },
+  "agent-studio": { index: "P01", signal: "1 秒启动云上工作 Agent" },
+  "xiaozeng-growthwise": { index: "P02", signal: "内容增长闭环" },
+  atlas: { index: "P03", signal: "统一模型、知识与观测" },
+  compass: { index: "P04", signal: "专业知识与来源追踪" },
+  consulting: { index: "P05", signal: "从场景到生产化" },
 };
 
 export function ProductsOverview() {

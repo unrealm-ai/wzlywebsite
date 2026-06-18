@@ -26,9 +26,9 @@ export const NEWS_ITEMS: NewsItem[] = [
   },
   {
     slug: "agent-studio-preview",
-    title: "Agent Studio 公测开启，可视化构建智能体",
+    title: "Cloud Managed Agents 公测开启，1 秒启动云上工作 Agent",
     excerpt:
-      "通过拖拽式工作流，将复杂的多步任务交给智能体自动完成。",
+      "云上托管的 Agents 支持多内核与多模型自由切换，可协作执行，也可在后台自动完成任务。",
     date: "2026-04-05",
     category: "产品发布",
   },
