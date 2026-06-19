@@ -1,6 +1,21 @@
 import { Container } from "@/components/layout/Container";
-import { Reveal } from "@/components/motion/Reveal";
 import { CUSTOMERS, CUSTOMER_COUNT } from "@/lib/trust";
+
+const CUSTOMER_TITLE_LINES = [
+  "和",
+  "客",
+  "户",
+  "一",
+  "起，",
+  "把",
+  "AI",
+  "放",
+  "进",
+  "真",
+  "实",
+  "业",
+  "务",
+] as const;
 
 export function Customers() {
   return (
@@ -9,69 +24,82 @@ export function Customers() {
       aria-labelledby="customers-heading"
     >
       <Container>
-        <div className="grid gap-8 lg:grid-cols-[minmax(280px,0.82fr)_minmax(0,1.7fr)] lg:items-start">
-          <Reveal>
-            <div className="border-y border-[var(--line)] py-6">
+        <div className="grid gap-6 lg:grid-cols-[120px_minmax(0,1fr)] lg:items-start">
+          <div className="flex h-full flex-col py-2">
+            <div>
               <p className="mb-4 text-xs font-medium uppercase tracking-[0.18em] text-[var(--accent)]">
                 Customer Cases
               </p>
               <h2
                 id="customers-heading"
-                className="max-w-xl text-3xl font-semibold leading-tight text-[var(--fg)] sm:text-4xl"
+                aria-label="和客户一起，把 AI 放进真实业务"
+                className="flex flex-col items-start gap-0 text-3xl font-semibold leading-[0.95] text-[var(--fg)] sm:text-5xl"
               >
-                和客户一起，把 AI 放进真实业务
+                {CUSTOMER_TITLE_LINES.map((line) => (
+                  <span key={line} aria-hidden="true">
+                    {line}
+                  </span>
+                ))}
               </h2>
-              <p className="mt-5 max-w-md text-base leading-relaxed text-[var(--muted)]">
-                我们服务制造、云与算力、智能产品、内容与交互等真实业务场景，把模型能力、工程交付和生产运行连接起来。
-              </p>
-              <div className="mt-8 border-t border-[var(--line)] pt-5">
-                <div className="font-mono text-3xl font-semibold text-[var(--fg)]">
-                  {CUSTOMER_COUNT}
+            </div>
+          </div>
+
+          <div className="h-full border-y border-[var(--line)] py-5">
+            <div className="mb-5 flex justify-start">
+              <div className="grid w-full max-w-sm grid-cols-2 border-y border-[var(--line)] lg:border-y-0">
+                <div className="py-4 pr-6 lg:py-0">
+                  <div className="font-mono text-4xl font-semibold text-[var(--fg)]">
+                    {CUSTOMER_COUNT}
+                  </div>
+                  <div className="mt-2 text-xs text-[var(--subtle)]">
+                    标杆客户
+                  </div>
+                  <div className="mt-4 h-0.5 w-9 bg-[var(--accent)]" />
                 </div>
-                <div className="mt-2 text-xs text-[var(--subtle)]">
-                  标杆客户
+                <div className="border-l border-[var(--line)] py-4 pl-6 lg:py-0">
+                  <div className="font-mono text-4xl font-semibold text-[var(--fg)]">
+                    {CUSTOMER_COUNT}
+                  </div>
+                  <div className="mt-2 text-xs text-[var(--subtle)]">
+                    场景方向
+                  </div>
                 </div>
-                <div className="mt-4 h-0.5 w-9 bg-[var(--accent)]" />
               </div>
             </div>
-          </Reveal>
 
-          <Reveal delay={0.08}>
-            <div className="border-y border-[var(--line)] py-5">
-              <div className="mb-5 flex items-center gap-4">
-                <div className="text-xs uppercase tracking-[0.16em] text-[var(--subtle)]">
-                  Clients
-                </div>
-                <div className="h-px flex-1 bg-[var(--line)]" />
-              </div>
-              <ul className="grid grid-cols-1 gap-px bg-[var(--line)] md:grid-cols-2">
-                {CUSTOMERS.map((customer, idx) => (
-                  <li
-                    key={customer.name}
-                    className="grid min-h-52 gap-5 bg-[var(--surface-elevated)] p-6 sm:grid-cols-[64px_1fr]"
-                  >
-                    <div className="font-mono text-xs text-[var(--accent)]">
-                      C0{idx + 1}
+            <ul className="grid grid-cols-1 gap-px bg-[var(--line)] md:grid-cols-2">
+              {CUSTOMERS.map((customer, idx) => (
+                <li
+                  key={customer.name}
+                  className="flex min-h-52 flex-col justify-between bg-[var(--surface-elevated)] p-6 sm:p-7"
+                >
+                  <div>
+                    <div className="flex items-start justify-between gap-4">
+                      <span className="font-mono text-xs text-[var(--accent)]">
+                        C0{idx + 1}
+                      </span>
+                      <span className="border border-[var(--line)] px-2 py-1 text-xs text-[var(--muted)]">
+                        {customer.field}
+                      </span>
                     </div>
-                    <div>
-                      <div className="flex flex-wrap items-center gap-2">
-                        <h3 className="whitespace-nowrap text-2xl font-semibold leading-none text-[var(--fg)] sm:text-3xl">
-                          {customer.name}
-                        </h3>
-                        <span className="border border-[var(--line)] px-2 py-1 text-xs text-[var(--muted)]">
-                          {customer.field}
-                        </span>
-                      </div>
+                    <div className="mt-10">
+                      <h3 className="whitespace-nowrap text-2xl font-semibold leading-none text-[var(--fg)] sm:text-3xl">
+                        {customer.name}
+                      </h3>
                       <p className="mt-5 max-w-xl text-sm leading-relaxed text-[var(--muted)]">
                         {customer.intro}
                       </p>
-                      <div className="mt-6 h-px w-12 bg-[var(--accent)]" />
                     </div>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </Reveal>
+                  </div>
+                  <div className="mt-6 h-px w-12 bg-[var(--accent)]" />
+                </li>
+              ))}
+            </ul>
+
+            <p className="mt-6 max-w-2xl text-base leading-relaxed text-[var(--muted)]">
+              我们服务制造、云与算力、智能产品、内容与交互等真实业务场景，把模型能力、工程交付和生产运行连接起来。
+            </p>
+          </div>
         </div>
       </Container>
     </section>
