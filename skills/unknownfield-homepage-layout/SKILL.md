@@ -69,12 +69,15 @@ Use `120px` for compact title columns. Use up to `160px` only when the left colu
 - Avoid empty title bands, large unused whitespace, or content that starts far to the right.
 - Keep cards, rows, and stats left-aligned inside the right column.
 - For dense information maps, prefer table-like rows, light borders, and compact spacing over decorative cards.
+- Keep right-side homepage content transparent by default, including product maps, customer cases, news lists, and similar repeated content.
+- Do not use filled surfaces such as `bg-[var(--surface-elevated)]` on right-side containers or repeated items unless the user explicitly asks for a filled card treatment.
 
 ## Divider Rules
 
 - Do not add top/bottom horizontal divider lines around the left title column unless explicitly requested.
 - Remove standalone title-section divider lines when they create empty bands.
 - Keep only structural separators that clarify the right-side content, such as row dividers inside product/customer lists.
+- When converting filled cards to transparent content, replace `gap-px` plus parent background separators with explicit borders on the transparent items.
 - Use light neutral lines and淡橙 accent only as a small signal, not as a large color block.
 
 ## Motion

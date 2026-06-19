@@ -1,5 +1,6 @@
 import { Container } from "@/components/layout/Container";
 import { CUSTOMERS, CUSTOMER_COUNT } from "@/lib/trust";
+import { cn } from "@/lib/utils";
 
 const CUSTOMER_TITLE_LINES = [
   "和",
@@ -67,11 +68,21 @@ export function Customers() {
               </div>
             </div>
 
-            <ul className="grid grid-cols-1 gap-px bg-[var(--line)] md:grid-cols-2">
+            <ul className="grid grid-cols-1 md:grid-cols-2">
               {CUSTOMERS.map((customer, idx) => (
                 <li
                   key={customer.name}
-                  className="flex min-h-52 flex-col justify-between bg-[var(--surface-elevated)] p-6 sm:p-7"
+                  className={cn(
+                    "flex min-h-52 flex-col justify-between p-6 sm:p-7",
+                    idx !== CUSTOMERS.length - 1 &&
+                      "border-b border-[var(--line)]",
+                    idx < CUSTOMERS.length - 2
+                      ? "md:border-b md:border-[var(--line)]"
+                      : "md:border-b-0",
+                    idx % 2 === 0
+                      ? "md:border-r md:border-[var(--line)]"
+                      : "md:border-r-0",
+                  )}
                 >
                   <div>
                     <div className="flex items-start justify-between gap-4">
