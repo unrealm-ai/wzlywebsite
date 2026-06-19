@@ -1,0 +1,4 @@
+interface:
+  display_name: "UnknownField Homepage Layout"
+  short_description: "Homepage sections with left vertical titles and aligned content"
+  default_prompt: "Use $unknownfield-homepage-layout to redesign a homepage section with left vertical titles and left-aligned content."

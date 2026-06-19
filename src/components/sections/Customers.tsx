@@ -44,7 +44,7 @@ export function Customers() {
             </div>
           </div>
 
-          <div className="h-full border-y border-[var(--line)] py-5">
+          <div className="h-full py-5">
             <div className="mb-5 flex justify-start">
               <div className="grid w-full max-w-sm grid-cols-2 border-y border-[var(--line)] lg:border-y-0">
                 <div className="py-4 pr-6 lg:py-0">

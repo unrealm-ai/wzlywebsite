@@ -53,7 +53,6 @@ export function ValueProps() {
                   <span className="font-mono text-sm text-[var(--accent)]">
                     {item.step}
                   </span>
-                  <span className="mt-2 h-px flex-1 bg-[var(--line-strong)] transition-colors group-hover:bg-[var(--accent)]" />
                 </div>
                 <div className="mt-16">
                   <p className="mb-3 text-xs uppercase tracking-[0.16em] text-[var(--subtle)]">
