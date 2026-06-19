@@ -30,7 +30,7 @@ export function ValueProps() {
     <section className="relative overflow-hidden bg-[var(--surface)] py-20 sm:py-28">
       <Container>
         <Reveal>
-          <div className="grid gap-8 border-b border-[var(--line)] pb-10 lg:grid-cols-12 lg:items-end">
+          <div className="grid gap-8 pb-10 lg:grid-cols-12 lg:items-end">
             <div className="lg:col-span-7">
               <p className="mb-4 text-xs font-medium uppercase tracking-[0.18em] text-[var(--accent)]">
                 Capability Path
