@@ -69,9 +69,18 @@ export function Footer() {
             © {SITE.copyrightYear} {SITE.name} {SITE.brandEn}. All rights
             reserved.
           </p>
-          <p className="text-xs text-[var(--subtle)]">
-            Crafted with care · 探索未知，定义边界
-          </p>
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-[var(--subtle)]">
+            <a
+              href="https://beian.miit.gov.cn/"
+              target="_blank"
+              rel="noreferrer"
+              className="transition-colors hover:text-[var(--fg)]"
+            >
+              浙ICP备2023040519号-2
+            </a>
+            <span aria-hidden>·</span>
+            <span>Crafted with care · 探索未知，定义边界</span>
+          </div>
         </div>
       </Container>
     </footer>

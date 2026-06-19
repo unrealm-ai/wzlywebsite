@@ -1,9 +1,10 @@
 import { Container } from "@/components/layout/Container";
 import { Reveal } from "@/components/motion/Reveal";
+import { CUSTOMER_COUNT } from "@/lib/trust";
 
 const STATS = [
   { value: "10+", label: "行业方案", hint: "金融、医疗、法律等复杂场景" },
-  { value: "100+", label: "企业客户", hint: "覆盖多类组织协作流程" },
+  { value: CUSTOMER_COUNT, label: "标杆客户", hint: "覆盖云、制造与智能产品场景" },
   { value: "99.9%", label: "服务可用性", hint: "面向生产环境持续运行" },
   { value: "<200ms", label: "平均响应", hint: "端到端 P50 延迟目标" },
 ] as const;

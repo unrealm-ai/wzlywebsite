@@ -1,10 +1,11 @@
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { ButtonLink } from "@/components/ui/Button";
+import { CUSTOMER_COUNT } from "@/lib/trust";
 
 const HERO_PROOFS = [
   ["10+", "行业方案"],
-  ["100+", "企业客户"],
+  [CUSTOMER_COUNT, "标杆客户"],
   ["99.9%", "服务可用性"],
 ] as const;
 
