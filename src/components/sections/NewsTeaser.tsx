@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/layout/Container";
-import { Reveal } from "@/components/motion/Reveal";
 
 interface NewsItem {
   slug: string;
@@ -31,38 +30,39 @@ const PLACEHOLDER_NEWS: NewsItem[] = [
   },
 ];
 
+const NEWS_TITLE_LINES = ["保", "持", "探", "索", "的", "脚", "步"] as const;
+
 export function NewsTeaser() {
   return (
     <section className="bg-[var(--surface)] py-20 sm:py-28">
       <Container>
-        <div className="grid gap-8 border-b border-[var(--line)] pb-10 lg:grid-cols-12 lg:items-end">
-          <Reveal>
-            <div className="lg:col-span-7">
-              <p className="mb-4 text-xs font-medium uppercase tracking-[0.18em] text-[var(--accent)]">
-                Updates
-              </p>
-              <h2 className="text-3xl font-semibold leading-tight text-[var(--fg)] sm:text-5xl">
-                保持探索的脚步
-              </h2>
-            </div>
-          </Reveal>
-          <Reveal delay={0.08}>
-            <div className="lg:col-span-5 lg:text-right">
-              <Link
-                href="/news"
-                className="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--fg)] transition-colors hover:text-[var(--accent-strong)]"
-              >
-                查看全部新闻
-                <ArrowUpRight className="h-4 w-4" aria-hidden />
-              </Link>
-            </div>
-          </Reveal>
-        </div>
+        <div className="grid gap-6 lg:grid-cols-[160px_minmax(0,1fr)] lg:items-start">
+          <div className="py-2">
+            <p className="mb-4 text-xs font-medium uppercase tracking-[0.18em] text-[var(--accent)]">
+              Updates
+            </p>
+            <h2
+              aria-label="保持探索的脚步"
+              className="flex flex-col items-start gap-0 text-3xl font-semibold leading-[0.95] text-[var(--fg)] sm:text-5xl"
+            >
+              {NEWS_TITLE_LINES.map((line) => (
+                <span key={line} aria-hidden="true">
+                  {line}
+                </span>
+              ))}
+            </h2>
+            <Link
+              href="/news"
+              className="mt-8 inline-flex items-center gap-1.5 text-sm font-medium text-[var(--fg)] transition-colors hover:text-[var(--accent-strong)]"
+            >
+              查看全部新闻
+              <ArrowUpRight className="h-4 w-4" aria-hidden />
+            </Link>
+          </div>
 
-        <ul className="divide-y divide-[var(--line)]">
-          {PLACEHOLDER_NEWS.map((item, idx) => (
-            <Reveal key={item.slug} delay={idx * 0.05}>
-              <li>
+          <ul className="divide-y divide-[var(--line)] text-left">
+            {PLACEHOLDER_NEWS.map((item) => (
+              <li key={item.slug}>
                 <Link
                   href={`/news/${item.slug}`}
                   className="group grid gap-4 py-7 transition-colors hover:text-[var(--accent-strong)] sm:grid-cols-[160px_1fr_auto] sm:items-center"
@@ -87,9 +87,9 @@ export function NewsTeaser() {
                   />
                 </Link>
               </li>
-            </Reveal>
-          ))}
-        </ul>
+            ))}
+          </ul>
+        </div>
       </Container>
     </section>
   );
