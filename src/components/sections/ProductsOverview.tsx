@@ -61,7 +61,7 @@ export function ProductsOverview() {
           </Reveal>
 
           <Reveal delay={0.08}>
-            <div className="overflow-hidden border-y border-[var(--line)] bg-[var(--surface-elevated)]">
+            <div className="overflow-hidden border-y border-[var(--line)]">
               <Link
                 href={`/products#${primaryProduct.id}`}
                 className="group grid gap-7 p-6 transition-colors hover:bg-[var(--surface)] sm:p-7 lg:grid-cols-12 lg:gap-10"
