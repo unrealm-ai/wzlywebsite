@@ -22,26 +22,26 @@ const siteUrl = new URL(siteBasePath || "/", siteOrigin).toString();
 export const metadata: Metadata = {
   metadataBase: new URL(siteOrigin),
   title: {
-    default: "未知领域 unrealm-ai — AI 与智能体的新边界",
-    template: "%s | 未知领域 unrealm-ai",
+    default: "未知领域 AI — 探索未知 定义边界",
+    template: "%s | 未知领域 AI",
   },
   description:
-    "未知领域（unrealm-ai）是一家专注于大模型与智能体技术的 AI 公司，为企业提供下一代智能产品与服务。",
+    "未知领域AI 是一家专注于大模型与智能体技术的 AI 公司，为企业提供下一代智能产品与服务。",
   keywords: ["AI", "大模型", "智能体", "Agent", "未知领域", "unrealm-ai", "LLM"],
   authors: [{ name: "未知领域" }],
-  creator: "未知领域 unrealm-ai",
+  creator: "未知领域 AI",
   openGraph: {
     type: "website",
     locale: "zh_CN",
     url: siteUrl,
-    siteName: "未知领域 unrealm-ai",
-    title: "未知领域 unrealm-ai — AI 与智能体的新边界",
+    siteName: "未知领域 AI",
+    title: "未知领域 AI — 探索未知, 定义边界.",
     description:
       "专注于大模型与智能体技术的 AI 公司，为企业提供下一代智能产品与服务。",
   },
   twitter: {
     card: "summary_large_image",
-    title: "未知领域 unrealm-ai",
+    title: "未知领域 AI",
     description:
       "专注于大模型与智能体技术的 AI 公司，为企业提供下一代智能产品与服务。",
   },
