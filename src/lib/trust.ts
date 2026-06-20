@@ -19,6 +19,11 @@ export const CUSTOMERS = [
     field: "智能交互",
     intro: "关注内容、知识与智能交互场景，探索模型能力在业务流程中的持续应用。",
   },
+  {
+    name: "雪球易创",
+    field: "智能协作",
+    intro: "面向企业协作与业务创新场景，推动 AI Agent 能力进入日常工作流与项目交付。",
+  },
 ] as const;
 
 export const CUSTOMER_COUNT = String(CUSTOMERS.length);

@@ -18,6 +18,10 @@ const CUSTOMER_TITLE_LINES = [
   "务",
 ] as const;
 
+const LAST_CUSTOMER_ROW_START =
+  Math.floor((CUSTOMERS.length - 1) / 2) * 2;
+const HAS_ODD_CUSTOMER_COUNT = CUSTOMERS.length % 2 === 1;
+
 export function Customers() {
   return (
     <section
@@ -76,12 +80,15 @@ export function Customers() {
                     "flex min-h-52 flex-col justify-between p-6 sm:p-7",
                     idx !== CUSTOMERS.length - 1 &&
                       "border-b border-[var(--line)]",
-                    idx < CUSTOMERS.length - 2
+                    idx < LAST_CUSTOMER_ROW_START
                       ? "md:border-b md:border-[var(--line)]"
                       : "md:border-b-0",
                     idx % 2 === 0
                       ? "md:border-r md:border-[var(--line)]"
                       : "md:border-r-0",
+                    HAS_ODD_CUSTOMER_COUNT &&
+                      idx === CUSTOMERS.length - 1 &&
+                      "md:col-span-2 md:border-r-0",
                   )}
                 >
                   <div>
