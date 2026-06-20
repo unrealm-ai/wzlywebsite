@@ -7,7 +7,7 @@ const CUSTOMER_TITLE_LINES = [
   "客",
   "户",
   "一",
-  "起，",
+  "起 ，",
   "把",
   "AI",
   "放",
