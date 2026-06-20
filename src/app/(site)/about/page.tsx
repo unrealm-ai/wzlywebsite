@@ -1,6 +1,7 @@
 import { ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { buildPageMetadata } from "@/lib/seo";
+import { cn } from "@/lib/utils";
 
 export const metadata = buildPageMetadata({
   title: "关于我们",
@@ -41,6 +42,12 @@ const TEAM_MEMBERS = [
     focus: "负责模型研究、算法路线与前沿技术验证。",
   },
   {
+    initials: "WH",
+    name: "吴昊",
+    title: "研究员",
+    focus: "参与模型能力研究、实验验证与应用场景探索。",
+  },
+  {
     initials: "WK",
     name: "王凯",
     title: "产品总监",
@@ -53,6 +60,8 @@ const TEAM_MEMBERS = [
     focus: "负责核心系统工程、工具链与稳定性建设。",
   },
 ] as const;
+
+const HAS_ODD_TEAM_COUNT = TEAM_MEMBERS.length % 2 === 1;
 
 const MILESTONES = [
   { year: "2024", title: "公司创立", desc: "由 AI 研究、工程与产品团队共同发起。" },
@@ -160,28 +169,40 @@ export default function AboutPage() {
           </div>
 
           <div className="grid grid-cols-1 border-b border-[var(--line)] lg:grid-cols-2">
-            {TEAM_MEMBERS.map((member, idx) => (
-              <article
-                key={member.name}
-                className="group grid min-h-[260px] grid-cols-[88px_1fr] gap-6 border-t border-[var(--line)] py-8 lg:odd:border-r lg:odd:pr-10 lg:even:pl-10"
-              >
-                <div className="flex h-16 w-16 items-center justify-center border border-[var(--line-strong)] bg-[var(--surface-elevated)] font-mono text-sm text-[var(--accent)] transition-colors group-hover:border-[var(--accent)]">
-                  {member.initials}
-                </div>
-                <div>
-                  <p className="text-sm text-[var(--subtle)]">0{idx + 1}</p>
-                  <h3 className="mt-5 text-3xl font-semibold text-[var(--fg)]">
-                    {member.name}
-                  </h3>
-                  <p className="mt-3 text-base font-medium text-[var(--accent-strong)]">
-                    {member.title}
-                  </p>
-                  <p className="mt-5 max-w-md text-[15px] leading-relaxed text-[var(--muted)]">
-                    {member.focus}
-                  </p>
-                </div>
-              </article>
-            ))}
+            {TEAM_MEMBERS.map((member, idx) => {
+              const isLastOddMember =
+                HAS_ODD_TEAM_COUNT && idx === TEAM_MEMBERS.length - 1;
+
+              return (
+                <article
+                  key={member.name}
+                  className={cn(
+                    "group grid min-h-[260px] grid-cols-[88px_1fr] gap-6 border-t border-[var(--line)] py-8",
+                    idx % 2 === 0 &&
+                      !isLastOddMember &&
+                      "lg:border-r lg:pr-10",
+                    idx % 2 === 1 && "lg:pl-10",
+                    isLastOddMember && "lg:col-span-2",
+                  )}
+                >
+                  <div className="flex h-16 w-16 items-center justify-center border border-[var(--line-strong)] bg-[var(--surface-elevated)] font-mono text-sm text-[var(--accent)] transition-colors group-hover:border-[var(--accent)]">
+                    {member.initials}
+                  </div>
+                  <div>
+                    <p className="text-sm text-[var(--subtle)]">0{idx + 1}</p>
+                    <h3 className="mt-5 text-3xl font-semibold text-[var(--fg)]">
+                      {member.name}
+                    </h3>
+                    <p className="mt-3 text-base font-medium text-[var(--accent-strong)]">
+                      {member.title}
+                    </p>
+                    <p className="mt-5 max-w-md text-[15px] leading-relaxed text-[var(--muted)]">
+                      {member.focus}
+                    </p>
+                  </div>
+                </article>
+              );
+            })}
           </div>
         </Container>
       </section>
