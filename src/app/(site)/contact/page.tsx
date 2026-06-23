@@ -28,7 +28,7 @@ const CONTACTS = [
   {
     icon: MapPin,
     label: "地址",
-    value: "中国 · 北京",
+    value: "中国 · 杭州",
   },
 ];
 
