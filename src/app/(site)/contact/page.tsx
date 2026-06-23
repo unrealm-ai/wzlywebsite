@@ -62,7 +62,7 @@ export default function ContactPage() {
                 </>
               );
               return (
-                <Reveal key={c.label} delay={idx * 0.06}>
+                <Reveal key={c.label} delay={idx * 0.06} className="h-full">
                   {c.href ? (
                     <a
                       href={c.href}
@@ -81,8 +81,8 @@ export default function ContactPage() {
           </div>
 
           <div id="contact-form" className="grid grid-cols-1 md:grid-cols-12 gap-12 scroll-mt-24">
-            <Reveal>
-              <div className="md:col-span-5">
+            <Reveal className="md:col-span-5">
+              <div>
                 <div className="mb-7 h-1 w-16 rounded-full bg-[var(--brand)]" />
                 <h2 className="text-3xl font-semibold">
                   发送合作需求
@@ -96,8 +96,8 @@ export default function ContactPage() {
               </div>
             </Reveal>
 
-            <Reveal delay={0.08}>
-              <form className="hairline-card space-y-5 rounded-lg p-6 md:col-span-7 sm:p-8">
+            <Reveal delay={0.08} className="md:col-span-7">
+              <form className="hairline-card space-y-5 rounded-lg p-6 sm:p-8">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
                     <label
