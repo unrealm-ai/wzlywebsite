@@ -14,7 +14,6 @@ interface RevealProps {
 }
 
 const variants: Variants = {
-  hidden: { opacity: 0, y: 16 },
   visible: {
     opacity: 1,
     y: 0,
@@ -38,7 +37,8 @@ export function Reveal({
     <MotionTag
       className={cn(className)}
       variants={variants}
-      initial="hidden"
+      // 正文默认可见，避免脚本或视口观察器未启动时整块内容消失。
+      initial={false}
       whileInView="visible"
       viewport={{ once, amount: 0.3 }}
       transition={{ delay }}

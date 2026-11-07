@@ -32,7 +32,7 @@ export function getCategoryLabel(category: Product["category"]) {
 export const PRODUCTS: Product[] = [
   {
     id: "agent-studio",
-    name: "Cloud Managed Agents",
+    name: "Agent Cloud",
     tagline: "云上托管的 Agents，1 秒钟启动工作 Agent",
     description:
       "云上托管的 Agents，1 秒钟即可启动你的工作 Agent。不论是与你一起协作，还是自动在后台执行工作，都可即开即用。",
@@ -46,19 +46,19 @@ export const PRODUCTS: Product[] = [
     category: "agent",
   },
   {
-    id: "xiaozeng-growthwise",
-    name: "小增 App",
-    tagline: "AI 内容运营与增长智能助手",
+    id: "identale",
+    name: "Identale",
+    tagline: "企业级 AI 员工平台",
     description:
-      "面向老板、创作者和运营团队，把素材变成选题，把选题变成多平台内容，再把发布反馈变成下一轮增长判断。",
+      "面向企业的 AI 员工平台，让 AI 员工融入团队协作与日常业务，帮助企业将重复工作交给 AI，让团队专注于更有价值的任务。",
     features: [
-      "灵感库沉淀产品卖点、用户问题、竞品素材和评论反馈",
-      "选题台按人群、场景、痛点、平台和转化意图生成主题池",
-      "内容稿覆盖小红书笔记、短视频脚本、公众号大纲和私域文案",
-      "发布编排与增长复盘形成持续内容增长闭环",
+      "围绕企业岗位与业务场景配置 AI 员工",
+      "结合企业知识与工作要求处理任务",
+      "支持人与 AI 员工协同推进工作",
+      "统一管理 AI 员工与任务进展",
     ],
     status: "coming-soon",
-    category: "service",
+    category: "platform",
   },
   {
     id: "atlas",

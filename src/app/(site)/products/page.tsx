@@ -8,7 +8,7 @@ import { Check } from "lucide-react";
 export const metadata = buildPageMetadata({
   title: "产品与服务",
   description:
-    "未知领域提供 Cloud Managed Agents、小增 App 内容增长助手、企业级大模型平台、行业知识助手与端到端 AI 咨询服务。",
+    "未知领域提供 Agent Cloud、Identale 企业级 AI 员工平台、企业级大模型平台、行业知识助手与端到端 AI 咨询服务。",
   path: "/products",
 });
 
@@ -26,7 +26,7 @@ export default function ProductsPage() {
       <PageHero
         eyebrow="产品与服务"
         title="为企业智能化打造的完整工具集"
-        description="从云端 Agent 到内容增长助手，从模型平台到行业知识与落地咨询 —— 一套可演进的产品矩阵。"
+        description="从云端 Agent 到企业级 AI 员工平台，从模型平台到行业知识与落地咨询 —— 一套可演进的产品矩阵。"
       />
 
       <section className="py-20 sm:py-28">
