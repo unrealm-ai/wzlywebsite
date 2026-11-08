@@ -6,7 +6,7 @@ import { PRODUCTS, getStatusLabel, getCategoryLabel } from "@/lib/products";
 
 const PRODUCT_VISUAL_META: Record<string, { index: string; signal: string }> = {
   "agent-studio": { index: "P01", signal: "1 秒启动云上工作 Agent" },
-  "xiaozeng-growthwise": { index: "P02", signal: "内容增长闭环" },
+  identale: { index: "P02", signal: "人机协同工作" },
   atlas: { index: "P03", signal: "统一模型、知识与观测" },
   compass: { index: "P04", signal: "专业知识与来源追踪" },
   consulting: { index: "P05", signal: "从场景到生产化" },

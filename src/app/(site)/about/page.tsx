@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { buildPageMetadata } from "@/lib/seo";
@@ -30,34 +31,34 @@ const PRINCIPLES = [
 
 const TEAM_MEMBERS = [
   {
-    initials: "YS",
-    name: "阎晓",
-    title: "AI 工程技术总监",
-    focus: "负责 AI 工程体系、平台架构与生产化落地。",
+    photo: "/team/yan-su.webp",
+    name: "严肃",
+    title: "AI Native 产品与技术负责人",
+    focus: "全面负责公司 AI Native 产品与技术，主导制定公司 AI Native 战略方向，推动产品创新与技术落地。",
   },
   {
-    initials: "HJ",
+    photo: "/team/hu-jian-v2.webp",
     name: "胡健",
     title: "首席研究员",
-    focus: "负责模型研究、算法路线与前沿技术验证。",
+    focus: "负责大模型与智能体的前沿研究，制定算法研究路线，推动关键技术验证与研究成果转化。",
   },
   {
-    initials: "WH",
+    photo: "/team/wu-hao.webp",
     name: "吴昊",
     title: "研究员",
-    focus: "参与模型能力研究、实验验证与应用场景探索。",
+    focus: "专注模型能力与智能体方法研究，开展实验评估与应用场景探索，连接前沿技术与实际业务需求。",
   },
   {
-    initials: "WK",
+    photo: "/team/wang-kai.webp",
     name: "王凯",
     title: "产品总监",
-    focus: "负责产品策略、行业场景与用户体验设计。",
+    focus: "负责产品规划与用户体验，深入识别行业需求，将 AI 能力转化为清晰、易用且有业务价值的产品。",
   },
   {
-    initials: "LJ",
-    name: "练俊文",
-    title: "资深工程师",
-    focus: "负责核心系统工程、工具链与稳定性建设。",
+    photo: "/team/chen-junwen-v2.webp",
+    name: "陈俊文",
+    title: "AI 工程技术总监",
+    focus: "负责 AI 工程体系、平台架构与生产化落地；负责核心系统工程、工具链与稳定性建设。",
   },
 ] as const;
 
@@ -66,7 +67,7 @@ const HAS_ODD_TEAM_COUNT = TEAM_MEMBERS.length % 2 === 1;
 const MILESTONES = [
   { year: "2024", title: "公司创立", desc: "由 AI 研究、工程与产品团队共同发起。" },
   { year: "2025", title: "首款产品发布", desc: "unrealm-ai Atlas 1.0 上线，服务首批企业客户。" },
-  { year: "2026", title: "智能体平台公测", desc: "Cloud Managed Agents 与 Compass 行业助手发布。" },
+  { year: "2026", title: "智能体平台公测", desc: "Agent Cloud 与 Compass 行业助手发布。" },
 ] as const;
 
 export default function AboutPage() {
@@ -177,7 +178,7 @@ export default function AboutPage() {
                 <article
                   key={member.name}
                   className={cn(
-                    "group grid min-h-[260px] grid-cols-[88px_1fr] gap-6 border-t border-[var(--line)] py-8",
+                    "group grid grid-cols-1 items-start gap-6 sm:grid-cols-[192px_1fr] border-t border-[var(--line)] py-8",
                     idx % 2 === 0 &&
                       !isLastOddMember &&
                       "lg:border-r lg:pr-10",
@@ -185,9 +186,14 @@ export default function AboutPage() {
                     isLastOddMember && "lg:col-span-2",
                   )}
                 >
-                  <div className="flex h-16 w-16 items-center justify-center border border-[var(--line-strong)] bg-[var(--surface-elevated)] font-mono text-sm text-[var(--accent)] transition-colors group-hover:border-[var(--accent)]">
-                    {member.initials}
-                  </div>
+                  <Image
+                    src={member.photo}
+                    alt={`${member.name}的 AI 生成示意照片`}
+                    width={768}
+                    height={768}
+                    sizes="(min-width: 640px) 192px, 100vw"
+                    className="aspect-square w-full rounded-lg object-cover sm:w-48"
+                  />
                   <div>
                     <p className="text-sm text-[var(--subtle)]">0{idx + 1}</p>
                     <h3 className="mt-5 text-3xl font-semibold text-[var(--fg)]">
@@ -196,7 +202,7 @@ export default function AboutPage() {
                     <p className="mt-3 text-base font-medium text-[var(--accent-strong)]">
                       {member.title}
                     </p>
-                    <p className="mt-5 max-w-md text-[15px] leading-relaxed text-[var(--muted)]">
+                    <p className="mt-5 max-w-md text-sm leading-relaxed text-[var(--muted)]">
                       {member.focus}
                     </p>
                   </div>

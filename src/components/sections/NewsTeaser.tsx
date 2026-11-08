@@ -24,7 +24,7 @@ const PLACEHOLDER_NEWS: NewsItem[] = [
   },
   {
     slug: "agent-studio-preview",
-    title: "Cloud Managed Agents 公测开启，1 秒启动云上工作 Agent",
+    title: "Agent Cloud 公测开启，1 秒启动云上工作 Agent",
     date: "2026-04-05",
     category: "产品发布",
   },
