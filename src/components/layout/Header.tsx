@@ -31,10 +31,19 @@ export function Header() {
       className={cn(
         "sticky top-0 z-50 transition-[background-color,border-color,backdrop-filter,box-shadow] duration-300 ease-out",
         scrolled
-          ? "border-b border-[var(--line)] bg-[var(--bg)] shadow-[0_10px_30px_-28px_rgba(17,16,14,0.8)] backdrop-blur-md"
-          : "bg-transparent border-b border-transparent",
+          ? "border-b border-[var(--line)] bg-[var(--bg)]/90 shadow-[0_14px_34px_rgba(20,24,28,0.08)] backdrop-blur-xl"
+          : "border-b border-transparent bg-[var(--bg)]/85 backdrop-blur-xl",
       )}
     >
+      {/* 顶部渐变彩条：蓝 → 金（对齐参考 HTML） */}
+      <div
+        className="h-[3px] w-full"
+        style={{
+          background:
+            "linear-gradient(90deg, var(--accent) 0 18%, var(--gold) 18% 22%, transparent 22%)",
+        }}
+        aria-hidden
+      />
       <Container>
         <div className="flex h-16 items-center justify-between">
           <Logo />

@@ -3,83 +3,48 @@ import { Container } from "./Container";
 import { Logo } from "@/components/brand/Logo";
 import { NAV_ITEMS, SITE } from "@/lib/nav";
 
-// 极简 Footer：三栏（品牌 / 导航 / 联络），底部版权
+// Footer：深色底，品牌 + 导航 + 版权（对齐参考 HTML）
 export function Footer() {
   return (
-    <footer className="mt-auto border-t border-[var(--line)] bg-[var(--surface)]">
+    <footer className="mt-auto bg-[#11151b] text-white">
       <Container>
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 py-16">
-          {/* 品牌区 */}
-          <div className="md:col-span-5 space-y-5">
+        <div className="flex flex-col justify-between gap-8 border-b border-white/10 py-12 md:flex-row md:items-start">
+          <div className="space-y-4">
             <Logo />
-            <p className="text-sm text-[var(--muted)] max-w-sm leading-relaxed">
-              {SITE.tagline} —— 专注于大模型与智能体技术，
-              为企业提供下一代智能产品与服务。
+            <p className="max-w-sm text-sm leading-relaxed text-[#8d96a2]">
+              把不确定的前沿模型能力，变成可治理、可交付、可持续运行的智能生产力。
             </p>
-            <div className="h-1 w-16 rounded-full bg-[var(--brand)]" aria-hidden />
           </div>
 
-          {/* 导航 */}
-          <div className="md:col-span-4">
-            <h3 className="text-xs font-medium uppercase text-[var(--subtle)] mb-4">
-              站点导航
-            </h3>
-            <ul className="space-y-3">
-              {NAV_ITEMS.map((item) => (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className="text-sm text-[var(--muted)] hover:text-[var(--fg)] transition-colors"
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* 联络 */}
-          <div className="md:col-span-3">
-            <h3 className="text-xs font-medium uppercase text-[var(--subtle)] mb-4">
-              联络
-            </h3>
-            <ul className="space-y-3">
-              <li>
-                <a
-                  href={`mailto:${SITE.email}`}
-                  className="text-sm text-[var(--muted)] hover:text-[var(--fg)] transition-colors"
-                >
-                  {SITE.email}
-                </a>
-              </li>
-              <li>
-                <Link
-                  href="/contact"
-                  className="text-sm text-[var(--muted)] hover:text-[var(--fg)] transition-colors"
-                >
-                  商务合作
-                </Link>
-              </li>
-            </ul>
-          </div>
+          <nav
+            className="flex flex-wrap gap-x-8 gap-y-3 text-sm text-[#c1c6ce]"
+            aria-label="页脚导航"
+          >
+            {NAV_ITEMS.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="transition-colors hover:text-white"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
         </div>
 
-        <div className="border-t border-[var(--line)] py-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
-          <p className="text-xs text-[var(--subtle)]">
-            © {SITE.copyrightYear} {SITE.name} {SITE.brandEn}. All rights
-            reserved.
-          </p>
-          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-[var(--subtle)]">
+        <div className="flex flex-col justify-between gap-2 py-6 text-xs text-[#78818e] sm:flex-row sm:items-center">
+          <span>© {SITE.copyrightYear} 未知领域 AI · UNREALM AI</span>
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
             <a
               href="https://beian.miit.gov.cn/"
               target="_blank"
               rel="noreferrer"
-              className="transition-colors hover:text-[var(--fg)]"
+              className="transition-colors hover:text-white"
             >
               浙ICP备2023040519号-2
             </a>
             <span aria-hidden>·</span>
-            <span>Crafted with care · 探索未知，定义边界</span>
+            <span>让智能真正进入业务</span>
           </div>
         </div>
       </Container>

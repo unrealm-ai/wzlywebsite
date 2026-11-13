@@ -1,94 +1,85 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/layout/Container";
+import { Reveal } from "@/components/motion/Reveal";
 
-interface NewsItem {
-  slug: string;
-  title: string;
-  date: string;
-  category: string;
-}
-
-const PLACEHOLDER_NEWS: NewsItem[] = [
-  {
-    slug: "welcome",
-    title: "未知领域正式发布：探索智能体的新边界",
-    date: "2026-05-10",
-    category: "公司动态",
-  },
-  {
-    slug: "atlas-2-0",
-    title: "unrealm-ai Atlas 2.0：企业级大模型平台重大更新",
-    date: "2026-04-22",
-    category: "产品更新",
-  },
-  {
-    slug: "agent-studio-preview",
-    title: "Agent Cloud 公测开启，1 秒启动云上工作 Agent",
-    date: "2026-04-05",
-    category: "产品发布",
-  },
-];
-
-const NEWS_TITLE_LINES = ["保", "持", "探", "索", "的", "脚", "步"] as const;
-
+// 新闻动态 —— 大卡 + 小卡（对齐参考 HTML）
 export function NewsTeaser() {
   return (
-    <section className="bg-[var(--surface)] py-20 sm:py-28">
+    <section className="border-b border-[var(--line)]">
       <Container>
-        <div className="grid gap-6 lg:grid-cols-[160px_minmax(0,1fr)] lg:items-start">
-          <div className="py-2">
-            <p className="mb-4 text-xs font-medium uppercase tracking-[0.18em] text-[var(--accent)]">
-              Updates
-            </p>
-            <h2
-              aria-label="保持探索的脚步"
-              className="flex flex-col items-start gap-0 text-3xl font-semibold leading-[0.95] text-[var(--fg)] sm:text-5xl"
-            >
-              {NEWS_TITLE_LINES.map((line) => (
-                <span key={line} aria-hidden="true">
-                  {line}
-                </span>
-              ))}
-            </h2>
-            <Link
-              href="/news"
-              className="mt-8 inline-flex items-center gap-1.5 text-sm font-medium text-[var(--fg)] transition-colors hover:text-[var(--accent-strong)]"
-            >
-              查看全部新闻
-              <ArrowUpRight className="h-4 w-4" aria-hidden />
-            </Link>
-          </div>
+        <div className="py-20 sm:py-28">
+          <Reveal>
+            <div className="mb-12 flex flex-col items-start justify-between gap-8 md:flex-row md:items-end">
+              <div>
+                <p className="mb-4 text-xs font-bold uppercase tracking-[0.2em] text-[var(--gold)]">
+                  04 / News &amp; Insights
+                </p>
+                <h2 className="text-3xl font-semibold leading-[1.2] sm:text-5xl">
+                  保持探索的脚步
+                </h2>
+              </div>
+              <p className="max-w-md text-sm leading-7 text-[var(--muted)]">
+                产品发布、技术洞察与公司动态。持续记录 AI 从技术探索走向企业应用的过程。
+              </p>
+            </div>
+          </Reveal>
 
-          <ul className="divide-y divide-[var(--line)] text-left">
-            {PLACEHOLDER_NEWS.map((item) => (
-              <li key={item.slug}>
+          <div className="grid gap-4 lg:grid-cols-[1.2fr_0.8fr]">
+            {/* 大卡 */}
+            <Reveal>
+              <article className="flex min-h-[310px] flex-col justify-between rounded-2xl border border-[var(--line)] bg-gradient-to-br from-white to-[#f0f1ed] p-7">
+                <div className="text-[13px] text-[var(--muted)]">
+                  2026.05.10　/　公司动态
+                </div>
+                <div>
+                  <h3 className="max-w-xl text-3xl leading-snug text-[var(--fg)]">
+                    未知领域正式发布：探索智能体的新边界
+                  </h3>
+                  <p className="mt-3 text-[13px] text-[var(--muted)]">
+                    我们相信，下一代生产力源自人与智能体的协作。以工程化能力推动 AI 进入真实业务场景。
+                  </p>
+                </div>
                 <Link
-                  href={`/news/${item.slug}`}
-                  className="group grid gap-4 py-7 transition-colors hover:text-[var(--accent-strong)] sm:grid-cols-[160px_1fr_auto] sm:items-center"
+                  href="/news"
+                  className="inline-flex items-center justify-between text-sm font-bold text-[var(--fg)] transition-colors hover:text-[var(--accent-strong)]"
                 >
-                  <time
-                    dateTime={item.date}
-                    className="font-mono text-xs text-[var(--subtle)] tabular-nums"
-                  >
-                    {item.date.replace(/-/g, ".")}
-                  </time>
-                  <div>
-                    <span className="text-xs text-[var(--accent)]">
-                      {item.category}
-                    </span>
-                    <span className="mt-2 block text-xl font-medium leading-snug text-[var(--fg)] transition-colors group-hover:text-[var(--accent-strong)]">
-                      {item.title}
-                    </span>
-                  </div>
-                  <ArrowUpRight
-                    className="h-4 w-4 text-[var(--muted)] transition-colors group-hover:text-[var(--accent-strong)]"
-                    aria-hidden
-                  />
+                  查看新闻动态
+                  <ArrowUpRight className="h-4 w-4 text-[var(--accent)]" aria-hidden />
                 </Link>
-              </li>
-            ))}
-          </ul>
+              </article>
+            </Reveal>
+
+            {/* 小卡组 */}
+            <div className="grid gap-4">
+              <Reveal delay={0.06}>
+                <article className="rounded-2xl border border-[var(--line)] bg-white p-7">
+                  <div className="text-[13px] text-[var(--muted)]">
+                    2026.04.22　/　产品更新
+                  </div>
+                  <h3 className="mt-4 text-lg font-semibold text-[var(--fg)]">
+                    unrealm-ai Atlas 2.0：企业级大模型平台更新
+                  </h3>
+                  <p className="mt-2 text-[13px] text-[var(--muted)]">
+                    多模型路由、Prompt 版本管理与可观测能力。
+                  </p>
+                </article>
+              </Reveal>
+              <Reveal delay={0.12}>
+                <article className="rounded-2xl border border-[var(--line)] bg-white p-7">
+                  <div className="text-[13px] text-[var(--muted)]">
+                    2026.04.05　/　产品发布
+                  </div>
+                  <h3 className="mt-4 text-lg font-semibold text-[var(--fg)]">
+                    Agent Cloud 公测开启
+                  </h3>
+                  <p className="mt-2 text-[13px] text-[var(--muted)]">
+                    云上托管的 Agents，支持多内核与多模型协作。
+                  </p>
+                </article>
+              </Reveal>
+            </div>
+          </div>
         </div>
       </Container>
     </section>

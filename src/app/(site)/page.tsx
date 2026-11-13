@@ -1,21 +1,21 @@
 import { Hero } from "@/components/sections/Hero";
-import { ValueProps } from "@/components/sections/ValueProps";
 import { ProductsOverview } from "@/components/sections/ProductsOverview";
-import { Stats } from "@/components/sections/Stats";
-import { Customers } from "@/components/sections/Customers";
+import { Engineering } from "@/components/sections/Engineering";
+import { UseCases } from "@/components/sections/UseCases";
 import { NewsTeaser } from "@/components/sections/NewsTeaser";
-import { CTA } from "@/components/sections/CTA";
+import { AboutBand } from "@/components/sections/AboutBand";
+import { ContactSection } from "@/components/sections/ContactSection";
 
 export default function HomePage() {
   return (
     <>
       <Hero />
-      <ValueProps />
       <ProductsOverview />
-      <Stats />
-      <Customers />
+      <Engineering />
+      <UseCases />
       <NewsTeaser />
-      <CTA />
+      <AboutBand />
+      <ContactSection />
     </>
   );
 }

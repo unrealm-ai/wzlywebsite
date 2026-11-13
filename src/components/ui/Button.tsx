@@ -25,20 +25,20 @@ const sizeClasses: Record<Size, string> = {
 // 颜色用 inline style 直接钉死，避免任何 Tailwind 任意值类的解析风险
 const variantStyles: Record<Variant, CSSProperties> = {
   primary: {
-    backgroundColor: "#11100e",
+    backgroundColor: "#111315",
     color: "#ffffff",
-    boxShadow: "0 12px 28px -16px rgba(17,16,14,0.65)",
+    boxShadow: "0 12px 28px -16px rgba(17,19,21,0.65)",
   },
   ghost: {
     backgroundColor: "transparent",
-    color: "#11100e",
+    color: "#111315",
   },
   outline: {
-    backgroundColor: "#fffdfa",
-    color: "#11100e",
+    backgroundColor: "#ffffff",
+    color: "#111315",
     borderWidth: "1px",
     borderStyle: "solid",
-    borderColor: "#ded8cd",
+    borderColor: "rgba(20,22,26,0.16)",
   },
 };
 

@@ -21,7 +21,8 @@ export function PageHero({ eyebrow, title, description }: PageHeroProps) {
       <Container>
         <div className="relative max-w-4xl pt-24 pb-16 sm:pt-32 sm:pb-20">
           {eyebrow && (
-            <p className="text-xs font-medium uppercase text-[var(--brand)] mb-4">
+            <p className="mb-4 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.2em] text-[var(--gold)]">
+              <span className="h-px w-8 bg-[var(--gold)]" aria-hidden />
               {eyebrow}
             </p>
           )}

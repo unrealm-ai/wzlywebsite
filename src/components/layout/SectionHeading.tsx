@@ -29,7 +29,8 @@ export function SectionHeading({
       )}
     >
       {eyebrow && (
-        <p className="text-xs font-medium uppercase text-[var(--brand)] mb-4">
+        <p className="mb-4 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.2em] text-[var(--gold)]">
+          <span className="h-px w-8 bg-[var(--gold)]" aria-hidden />
           {eyebrow}
         </p>
       )}

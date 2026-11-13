@@ -14,9 +14,9 @@ export const metadata = buildPageMetadata({
 
 const PRODUCT_ACCENTS = [
   "var(--accent)",
-  "var(--accent-light)",
-  "var(--line-strong)",
-  "var(--fg)",
+  "var(--accent)",
+  "var(--accent)",
+  "var(--accent)",
   "var(--accent)",
 ];
 
@@ -47,7 +47,7 @@ export default function ProductsPage() {
                         aria-hidden
                       />
                       <div className="flex items-center gap-3 mb-4">
-                        <span className="text-xs uppercase text-[var(--subtle)]">
+                        <span className="text-xs font-bold uppercase tracking-[0.14em] text-[var(--gold)]">
                           0{idx + 1} · {getCategoryLabel(product.category)}
                         </span>
                         <span className="rounded-md border border-[var(--line)] bg-white px-2 py-0.5 text-xs text-[var(--muted)]">

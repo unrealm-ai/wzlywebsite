@@ -46,7 +46,7 @@ export default async function NewsDetailPage({ params }: PageProps) {
           返回新闻列表
         </Link>
 
-        <p className="text-xs uppercase text-[var(--brand)] mb-4">
+        <p className="mb-4 text-xs font-bold uppercase tracking-[0.2em] text-[var(--gold)]">
           {item.category}
         </p>
         <h1 className="text-4xl font-semibold leading-tight sm:text-5xl">

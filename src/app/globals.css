@@ -11,25 +11,30 @@
 :root {
   color-scheme: light;
 
-  /* 站点色板 */
-  --bg: #f8f6f1;
-  --fg: #11100e;
-  --ink: #11100e;
-  --muted: #6f6b64;
-  --subtle: #9f988d;
-  --line: #ded8cd;
-  --line-strong: #c9c0b4;
-  --surface: #f0ece4;
-  --surface-elevated: #fffdfa;
-  --brand: #c58a52;
-  --brand-hover: #9f6636;
-  --brand-soft: #f5e5d3;
-  --accent: #c58a52;
-  --accent-strong: #9f6636;
-  --accent-light: #e0b47f;
+  /* 站点色板 —— 蓝金配色（对齐参考 HTML 设计） */
+  --bg: #f5f5f1;
+  --paper-2: #eeeee8;
+  --fg: #111315;
+  --ink: #111315;
+  --muted: #55595e;
+  --subtle: #7c828b;
+  --line: rgba(20, 22, 26, 0.16);
+  --line-strong: rgba(20, 22, 26, 0.28);
+  --surface: #eeeee8;
+  --surface-elevated: #ffffff;
+  --brand: #253cff;
+  --brand-hover: #1828c8;
+  --brand-soft: #dfe4ff;
+  --accent: #253cff;
+  --accent-strong: #1828c8;
+  --accent-light: #6676ff;
+  --gold: #8a5a34;
+  --gold-soft: #ead8c3;
+  --dark: #101318;
+  --dark-2: #171c23;
   --mint: #7c8178;
-  --amber: #c58a52;
-  --shadow-soft: 0 18px 48px -36px rgba(17, 16, 14, 0.34);
+  --amber: #8a5a34;
+  --shadow-soft: 0 22px 60px rgba(25, 28, 32, 0.07);
 }
 
 @theme {
@@ -81,7 +86,7 @@ a {
 
 .hairline-card {
   background:
-    linear-gradient(180deg, rgba(255, 253, 250, 0.98), rgba(255, 253, 250, 0.94)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.94)),
     var(--surface-elevated);
   border: 1px solid var(--line);
   box-shadow: var(--shadow-soft);
@@ -96,6 +101,17 @@ a {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* 首页拓扑图轨道环旋转 */
+@keyframes orbit-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.orbit-ring {
+  animation: orbit-spin 60s linear infinite;
 }
 
 /* ----------------------------------------------------------------------------

@@ -90,8 +90,8 @@ export default function AboutPage() {
         <Container>
           <div className="grid min-h-[520px] gap-10 py-20 sm:py-28 lg:grid-cols-12 lg:items-end">
             <div className="lg:col-span-8">
-              <p className="mb-5 inline-flex items-center gap-3 text-xs font-medium uppercase tracking-[0.2em] text-[var(--accent)]">
-                <span className="h-px w-8 bg-[var(--accent)]" aria-hidden />
+              <p className="mb-5 inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[0.2em] text-[var(--gold)]">
+                <span className="h-px w-8 bg-[var(--gold)]" aria-hidden />
                 About Unrealm AI
               </p>
               <h1 className="max-w-4xl text-4xl font-semibold leading-[1.02] text-[var(--fg)] sm:text-6xl lg:text-7xl">
@@ -112,7 +112,7 @@ export default function AboutPage() {
         <Container>
           <div className="grid gap-12 lg:grid-cols-12">
             <div className="lg:col-span-5">
-              <p className="mb-4 text-xs font-medium uppercase tracking-[0.18em] text-[var(--accent)]">
+              <p className="mb-4 text-xs font-bold uppercase tracking-[0.2em] text-[var(--gold)]">
                 Mission
               </p>
               <h2 className="text-3xl font-semibold leading-tight text-[var(--fg)] sm:text-5xl">
@@ -157,7 +157,7 @@ export default function AboutPage() {
         <Container>
           <div className="grid gap-8 border-b border-[var(--line)] pb-10 lg:grid-cols-12 lg:items-end">
             <div className="lg:col-span-7">
-              <p className="mb-4 text-xs font-medium uppercase tracking-[0.18em] text-[var(--accent)]">
+              <p className="mb-4 text-xs font-bold uppercase tracking-[0.2em] text-[var(--gold)]">
                 Team
               </p>
               <h2 className="text-3xl font-semibold leading-tight text-[var(--fg)] sm:text-5xl">
@@ -199,7 +199,7 @@ export default function AboutPage() {
                     <h3 className="mt-5 text-3xl font-semibold text-[var(--fg)]">
                       {member.name}
                     </h3>
-                    <p className="mt-3 text-base font-medium text-[var(--accent-strong)]">
+                    <p className="mt-3 text-base font-medium text-[var(--gold)]">
                       {member.title}
                     </p>
                     <p className="mt-5 max-w-md text-sm leading-relaxed text-[var(--muted)]">
@@ -217,7 +217,7 @@ export default function AboutPage() {
         <Container>
           <div className="grid gap-12 lg:grid-cols-12">
             <div className="lg:col-span-4">
-              <p className="mb-4 text-xs font-medium uppercase tracking-[0.18em] text-[var(--accent)]">
+              <p className="mb-4 text-xs font-bold uppercase tracking-[0.2em] text-[var(--gold)]">
                 Timeline
               </p>
               <h2 className="text-3xl font-semibold text-[var(--fg)]">

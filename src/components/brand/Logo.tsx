@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
@@ -8,29 +7,31 @@ interface LogoProps {
   compact?: boolean;
 }
 
+// 品牌标识：2×2 蓝色网格符号（对齐参考 HTML 设计）
 export function Logo({ className, compact = false }: LogoProps) {
   return (
     <Link
       href="/"
       aria-label="未知领域 AI 首页"
       className={cn(
-        "inline-flex items-center gap-2.5 text-[var(--fg)]",
+        "inline-flex items-center gap-3 text-[var(--fg)]",
         className,
       )}
     >
-      <Image
-        src="/brand/unknownfield-logo.png"
-        alt=""
-        width={32}
-        height={32}
-        priority
-        className="h-8 w-8 shrink-0 object-contain"
+      <span
+        className="grid h-[30px] w-[30px] shrink-0 grid-cols-2 grid-rows-2 gap-[3px]"
+        style={{ transform: "skewY(-2deg)" }}
         aria-hidden
-      />
+      >
+        <i className="block rounded-[2px] bg-[var(--accent)]" />
+        <i className="block rounded-[2px] bg-[var(--accent)] opacity-70" />
+        <i className="block rounded-[2px] bg-[var(--accent)] opacity-85" />
+        <i className="block rounded-[2px] bg-[var(--ink)]" />
+      </span>
       {!compact && (
-        <span className="text-base font-semibold">
+        <span className="text-[17px] font-bold tracking-tight">
           未知领域
-          <span className="ml-1 text-[var(--muted)] font-normal">AI</span>
+          <span className="ml-1.5 font-medium text-[#777]">AI</span>
         </span>
       )}
     </Link>
